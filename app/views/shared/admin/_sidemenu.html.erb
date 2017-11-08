@@ -19,7 +19,7 @@
           <%# if current_manager.role == 'super_admin' %>
             <%# if can? :manage, Site %>
               <li class="<%= "active" if controller_name == "sites" %>">
-                <a href="/admin/sites" class="auto">
+                <a href="/sites" class="auto">
                   <i class="fa fa-institution"></i>
                   <span>多站点管理</span>
                 </a>
@@ -27,9 +27,9 @@
             <%# end %>
             <%# if can? :manage, Manager %>
               <li class="<%= "active" if controller_name == "managers" %>">
-                <a href="/admin/managers" class="auto">
+                <a href="/bannars" class="auto">
                   <i class="fa fa-institution"></i>
-                  <span>管理员帐号</span>
+                  <span>广告管理</span>
                 </a>
               </li>
             <%# end %>

@@ -1,6 +1,7 @@
 class Bannar
   include Mongoid::Document
   include Mongoid::Timestamps
+  paginates_per 5
 
   #标题
   field :title, type: String
@@ -10,4 +11,6 @@ class Bannar
   field :active, type: Mongoid::Boolean
 
   mount_uploader :avatar, AvatarUploader
+
+  belongs_to :site
 end
