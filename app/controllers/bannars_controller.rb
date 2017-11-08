@@ -5,7 +5,7 @@ class BannarsController < ApplicationController
   # GET /bannars
   # GET /bannars.json
   def index
-    @bannars = Bannar.all
+    @bannars = Bannar.all.page params[:page]
   end
 
   # GET /bannars/1

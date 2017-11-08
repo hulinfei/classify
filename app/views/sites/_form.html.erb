@@ -1,4 +1,4 @@
-<%= simple_form_for([:admin, @site], html: { multipart: true, class: "form-horizontal" }) do |f| %>
+<%= simple_form_for([@site], html: { multipart: true, class: "form-horizontal" }) do |f| %>
   <%= f.input :name, label: "站点名称" %>
   <%= f.input :weixin_appid, label: "微信APPID" %>
   <div class="line line-dashed b-b line-lg pull-in"></div>
