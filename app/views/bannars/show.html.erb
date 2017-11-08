@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @bannar.title %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @bannar.url %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @bannar.active %>
+</p>
+
+<%= link_to 'Edit', edit_bannar_path(@bannar) %> |
+<%= link_to 'Back', bannars_path %>

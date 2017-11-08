@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @site.name %>
+</p>
+
+<p>
+  <strong>Weixin appid:</strong>
+  <%= @site.weixin_appid %>
+</p>
+
+<p>
+  <strong>Weixin appsecret:</strong>
+  <%= @site.weixin_appsecret %>
+</p>
+
+<p>
+  <strong>Weixin secret key:</strong>
+  <%= @site.weixin_secret_key %>
+</p>
+
+<p>
+  <strong>Weixin token:</strong>
+  <%= @site.weixin_token %>
+</p>
+
+<%= link_to 'Edit', edit_site_path(@site) %> |
+<%= link_to 'Back', sites_path %>
