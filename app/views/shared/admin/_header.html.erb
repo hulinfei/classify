@@ -112,12 +112,12 @@
             <img src="/images/admin/a0.jpg" alt="...">
             <i class="on md b-white bottom"></i>
           </span>
-          <span class="hidden-sm hidden-md"><%#= current_user.email %></span> <b class="caret"></b>
+          <span class="hidden-sm hidden-md"><%= current_user.email %></span> <b class="caret"></b>
         </a>
         <!-- dropdown -->
         <ul class="dropdown-menu animated fadeInRight w">
           <li>
-            <%#= link_to "退出登录", destroy_user_session_path, method: :delete %>
+            <%= link_to "退出登录", destroy_user_session_path, method: :delete %>
           </li>
         </ul>
         <!-- / dropdown -->
