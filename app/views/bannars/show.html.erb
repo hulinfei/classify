@@ -9,11 +9,15 @@
   <strong>Url:</strong>
   <%= @bannar.url %>
 </p>
-
 <p>
   <strong>Active:</strong>
   <%= @bannar.active %>
 </p>
 
-<%= link_to 'Edit', edit_bannar_path(@bannar) %> |
-<%= link_to 'Back', bannars_path %>
+<% if not @bannar&.avatar&.url.blank? %>
+<img src="<%= @bannar.avatar.url %>">
+<% end %>
+<div class="line line-dashed b-b line-lg pull-in"></div>
+  
+<%= link_to "修改", edit_bannar_path(@bannar), class: "btn btn-success btn-xs" %>
+<%= link_to "返回", bannars_path,  class: "btn btn-success btn-xs" %>

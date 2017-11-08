@@ -2,6 +2,7 @@
   <td><%= site.name %></td>
   <td><%= site.weixin_appid %></td>
    <td><%= site.created_at.strftime("%F") %></td>
+   <td>
     <%= link_to "修改", edit_site_path(site), class: "btn btn-default btn-xs" %>
     <%= link_to "删除", site_path(site), method: :delete, class: "btn btn-default btn-xs" %>
   </td>

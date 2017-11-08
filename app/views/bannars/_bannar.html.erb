@@ -1,8 +1,11 @@
 <tr>
   <td><%= bannar.title %></td>
   <td><%= bannar.url %></td>
+  <td><%= bannar.active %></td>
+  <td><img src="<%= bannar.avatar_url('40') %>" alt="" /></td>
   <td><%= bannar.created_at.strftime("%F") %></td>
   <td>
+    <%= link_to "查看", bannar, class: "btn btn-default btn-xs" %>
     <%= link_to "修改", edit_bannar_path(bannar), class: "btn btn-default btn-xs" %>
     <%= link_to "删除", bannar_path(bannar), method: :delete, class: "btn btn-default btn-xs" %>
   </td>

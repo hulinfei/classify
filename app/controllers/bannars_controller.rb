@@ -1,4 +1,5 @@
 class BannarsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_bannar, only: [:show, :edit, :update, :destroy]
   layout 'admin'
 
@@ -70,6 +71,6 @@ class BannarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bannar_params
-      params.require(:bannar).permit(:title, :url, :active)
+      params.require(:bannar).permit(:title, :url, :active, :avatar)
     end
 end
