@@ -16,7 +16,7 @@ class BannarsController < ApplicationController
 
   # GET /bannars/new
   def new
-    @bannar = Bannar.new
+    @bannar = Site.find_by(user_id: current_user).bannars.build
   end
 
   # GET /bannars/1/edit
@@ -26,7 +26,7 @@ class BannarsController < ApplicationController
   # POST /bannars
   # POST /bannars.json
   def create
-    @bannar = Bannar.new(bannar_params)
+    @bannar = Site.find_by(user_id: current_user).bannars.build(bannar_params)
 
     respond_to do |format|
       if @bannar.save
