@@ -22,7 +22,7 @@
         <td><%= wx_user.nickname %></td>
         <td><%= wx_user.openid %></td>
         <td><% if not wx_user.avatar_url.blank?  %>
-          <%= image_tag wx_user.avatar_url('40'), class: "img-thumbnail" %>
+          <%= image_tag wx_user.avatar_url('30x30'), class: "img-thumbnail" %>
             <% end %>
         </td>
         <td><%= wx_user.created_at.strftime("%F %T") %></td>

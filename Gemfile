@@ -50,8 +50,9 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-# ORM
+# mongodb
 gem 'mongoid'
+gem 'mongoid-tree', :require => 'mongoid/tree'
 # 分页
 gem 'kaminari'
 gem 'kaminari-mongoid'

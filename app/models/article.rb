@@ -11,6 +11,8 @@ class Article
   field :view, type: Integer
   # 详情
   field :details, type: String
+  # 状态 0 待审核 1 已审核 2 已过期
+  field :status, type: Integer
 
   belongs_to :category
 end

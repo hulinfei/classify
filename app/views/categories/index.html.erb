@@ -20,7 +20,7 @@
       <tr>
         <td><%= category.name %></td>
         <td><% if not category.icon_url.blank?  %>
-          <%= image_tag category.icon_url('40'), class: "img-thumbnail" %>
+          <%= image_tag category.icon_url('30x30'), class: "img-thumbnail" %>
             <% end %>
         </td>
         <td><%= category.created_at.strftime("%F %T") %></td>

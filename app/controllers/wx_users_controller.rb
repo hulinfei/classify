@@ -11,14 +11,14 @@ class WxUsersController < ApplicationController
   end
 
   def new
-    @wx_user = WxUser.new#current_wx_user.wx_users.build
+    @wx_user = Site.find_by(user_id: current_user).wx_users.build
   end
 
   def edit
   end
 
   def create
-    @wx_user = WxUser.new(wx_user_params)
+    @wx_user = Site.find_by(user_id: current_user).wx_users.build(wx_user_params)
 
     respond_to do |format|
       if @wx_user.save

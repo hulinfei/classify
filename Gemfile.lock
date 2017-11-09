@@ -132,6 +132,8 @@ GEM
     mongoid (6.2.1)
       activemodel (~> 5.1)
       mongo (>= 2.4.1, < 3.0.0)
+    mongoid-tree (2.1.0)
+      mongoid (>= 4.0, < 7.0)
     multi_json (1.12.2)
     multipart-post (2.0.0)
     nio4r (2.1.0)
@@ -257,6 +259,7 @@ DEPENDENCIES
   kaminari-mongoid
   listen (>= 3.0.5, < 3.2)
   mongoid
+  mongoid-tree
   puma (~> 3.7)
   rails (~> 5.1.4)
   redis
