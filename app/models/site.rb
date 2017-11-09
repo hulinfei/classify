@@ -18,4 +18,5 @@ class Site
 
   has_many :bannars
   has_many :wx_users
+  belongs_to :user
 end

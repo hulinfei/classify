@@ -1,3 +1,9 @@
+<div class="panel panel-default">
+<div class="panel-heading font-bold">
+  查看站点
+</div>
+<div class="panel-body">
+
 <%= simple_form_for([@site], html: { multipart: true, class: "form-horizontal" }) do |f| %>
   <%= f.input :name, label: "站点名称" %>
   <%= f.input :domain, label: "站点域名" %>
@@ -9,3 +15,6 @@
 
 <%= link_to "修改", edit_site_path(@site), class: "btn btn-success btn-xs" %>
 <%= link_to "返回", sites_path,  class: "btn btn-success btn-xs" %>
+ </div>
+</div>
+</div>
