@@ -1,0 +1,41 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+      微信用户列表
+    <div class="pull-right">
+      <%= link_to "新建", new_wx_user_path, class: "btn btn-primary btn-xs" %>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped b-t b-light">
+      <thead>
+        <tr>
+          <th>昵称</th>
+          <th>openID</th>
+          <th>头像</th>
+          <th style="width:120px;">创建时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+       <% @wx_users.each do |wx_user| %>
+      <tr>
+        <td><%= wx_user.nickname %></td>
+        <td><%= wx_user.openid %></td>
+        <td><% if not wx_user.avatar_url.blank?  %>
+          <%= image_tag wx_user.avatar_url('40'), class: "img-thumbnail" %>
+            <% end %>
+        </td>
+        <td><%= wx_user.created_at.strftime("%F %T") %></td>
+        <td><%= link_to '查看', wx_user, class: "btn btn-default btn-xs" %>
+        <%= link_to '修改', edit_wx_user_path(wx_user), class: "btn btn-default btn-xs" %>
+        <%= link_to '删除', wx_user_path(wx_user), method: :delete, class: "btn btn-default btn-xs"  %>
+        </td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <footer class="panel-footer">
+    <%= render partial: "shared/admin/paginate", locals: { object: @wx_users } %>
+  </footer>
+</div>
