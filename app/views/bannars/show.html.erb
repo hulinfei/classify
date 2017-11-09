@@ -20,7 +20,7 @@
 </p>
 
 <% if not @bannar&.avatar&.url.blank? %>
-<img src="<%= @bannar.avatar.url %>">
+<img src="<%= @bannar.avatar.url('720x240') %>">
 <% end %>
 <div class="line line-dashed b-b line-lg pull-in"></div>
   

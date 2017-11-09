@@ -1,9 +1,15 @@
 <tr>
   <td><%= bannar.title %></td>
   <td><%= bannar.url %></td>
-  <td><%= bannar.active %></td>
+  <td>
+    <% if bannar.active == true%>
+      已激活
+    <% elsif bannar.active == false%>
+      已过期
+    <% end %>
+    </td>
   <td><%= bannar.end_time %></td>
-  <td><img src="<%= bannar.avatar_url('40') %>" alt="" /></td>
+  <td><img src="<%= bannar.avatar_url('165x30') %>" alt="" /></td>
   <td><%= bannar.created_at.strftime("%F") %></td>
   <td>
     <%= link_to "查看", bannar, class: "btn btn-default btn-xs" %>

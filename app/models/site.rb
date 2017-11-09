@@ -1,6 +1,7 @@
 class Site
   include Mongoid::Document
   include Mongoid::Timestamps
+  include WeixinRailsMiddleware::AutoGenerateWeixinTokenSecretKey
 
   paginates_per 3
   #站点名称
@@ -15,8 +16,17 @@ class Site
   field :weixin_secret_key, type: String
   #微信token
   field :weixin_token, type: String
+  # 站点二维码
+  mount_uploader :avatar, AvatarUploader
+  # 站点LOGO
+  #mount_uploader :avatar, AvatarUploader
+
 
   has_many :bannars
   has_many :wx_users
   belongs_to :user
+
+  def client
+    @client ||= WeixinAuthorize::Client.new(weixin_appid, weixin_appsecret, redis_key: id.to_s)
+  end
 end

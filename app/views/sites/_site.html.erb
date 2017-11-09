@@ -2,6 +2,8 @@
   <td><%= site.name %></td>
    <td><%= site.domain %></td>
   <td><%= site.weixin_appid %></td>
+  <!-- <td><%= weixin_engine.weixin_server_url(site.weixin_secret_key) %></td> -->
+  <td><%= site.weixin_token %></td>
    <td><%= site.created_at.strftime("%F") %></td>
    <td>
    	<%= link_to "查看", site, class: "btn btn-default btn-xs" %>

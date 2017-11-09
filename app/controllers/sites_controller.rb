@@ -1,7 +1,6 @@
-class SitesController < ApplicationController
-  before_action :authenticate_user!
+class SitesController < BaseController
   before_action :set_site, only: [:show, :edit, :update, :destroy]
-  layout 'admin'
+
 
   # GET /sites
   # GET /sites.json
@@ -30,8 +29,8 @@ class SitesController < ApplicationController
 
     respond_to do |format|
       if @site.save
-        format.html { redirect_to @site, notice: 'Site was successfully created.' }
-        format.json { render :show, status: :created, location: @site }
+        format.html { redirect_to sites_path, notice: 'Site was successfully created.' }
+        format.json { render :index, status: :created, location: @site }
       else
         format.html { render :new }
         format.json { render json: @site.errors, status: :unprocessable_entity }
@@ -45,7 +44,7 @@ class SitesController < ApplicationController
     respond_to do |format|
       if @site.update(site_params)
         format.html { redirect_to @site, notice: 'Site was successfully updated.' }
-        format.json { render :show, status: :ok, location: @site }
+        format.json { render :index, status: :ok, location: @sites }
       else
         format.html { render :edit }
         format.json { render json: @site.errors, status: :unprocessable_entity }

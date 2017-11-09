@@ -70,3 +70,7 @@ gem 'cancancan', '~> 2.0'
 gem 'sidekiq'
 gem 'redis'
 gem "sidekiq-cron"
+
+gem 'weixin_rails_middleware', git: "https://github.com/lanrion/weixin_rails_middleware.git" 
+gem 'weixin_authorize', git: "https://github.com/lanrion/weixin_authorize.git"
+gem "redis-namespace"

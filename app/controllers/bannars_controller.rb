@@ -6,7 +6,7 @@ class BannarsController < ApplicationController
   # GET /bannars
   # GET /bannars.json
   def index
-    @bannars = Bannar.all.page params[:page]
+    @bannars = Site.find_by(user_id: current_user).bannars.page params[:page]
   end
 
   # GET /bannars/1
