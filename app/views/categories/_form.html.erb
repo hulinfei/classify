@@ -1,4 +1,6 @@
 <%= simple_form_for(@category, html: { multipart: true, class: "form-horizontal" }) do |f| %>
+	<div class="col-sm-offset-2">
+  <%= f.select :parent_id, Category.all.map { |c| [c.name, c.id] } %>
     <%= f.input :name, label: "分类名" %>
   <div class="line line-dashed b-b line-lg pull-in"></div>
     <%= f.input :icon, label: "分类图标" %>
