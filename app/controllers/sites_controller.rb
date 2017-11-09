@@ -71,6 +71,6 @@ class SitesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def site_params
-      params.require(:site).permit(:name, :weixin_appid, :weixin_appsecret, :weixin_secret_key, :weixin_token)
+      params.require(:site).permit(:name, :domain, :weixin_appid, :weixin_appsecret, :weixin_secret_key, :weixin_token)
     end
 end

@@ -5,6 +5,8 @@ class Site
   paginates_per 3
   #站点名称
   field :name, type: String
+  #域名
+  field :domain, type: String
   #微信appid
   field :weixin_appid, type: String
   #微信appsecret
@@ -15,4 +17,5 @@ class Site
   field :weixin_token, type: String
 
   has_many :bannars
+  has_many :wx_users
 end

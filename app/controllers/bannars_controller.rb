@@ -71,6 +71,6 @@ class BannarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bannar_params
-      params.require(:bannar).permit(:title, :url, :active, :avatar)
+      params.require(:bannar).permit(:title, :url, :active, :avatar, :end_time)
     end
 end

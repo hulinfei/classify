@@ -1,29 +1,11 @@
-<p id="notice"><%= notice %></p>
+<%= simple_form_for([@site], html: { multipart: true, class: "form-horizontal" }) do |f| %>
+  <%= f.input :name, label: "站点名称" %>
+  <%= f.input :domain, label: "站点域名" %>
+  <%= f.input :weixin_appid, label: "微信APPID" %>
+  <%= f.input :weixin_appsecret, label: "微信appsecret" %>
+  <%= f.input :weixin_secret_key, label: "微信secret key " %>
+  <%= f.input :weixin_token, label: "微信token" %>
+<% end %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @site.name %>
-</p>
-
-<p>
-  <strong>Weixin appid:</strong>
-  <%= @site.weixin_appid %>
-</p>
-
-<p>
-  <strong>Weixin appsecret:</strong>
-  <%= @site.weixin_appsecret %>
-</p>
-
-<p>
-  <strong>Weixin secret key:</strong>
-  <%= @site.weixin_secret_key %>
-</p>
-
-<p>
-  <strong>Weixin token:</strong>
-  <%= @site.weixin_token %>
-</p>
-
-<%= link_to 'Edit', edit_site_path(@site) %> |
-<%= link_to 'Back', sites_path %>
+<%= link_to "修改", edit_site_path(@site), class: "btn btn-success btn-xs" %>
+<%= link_to "返回", sites_path,  class: "btn btn-success btn-xs" %>

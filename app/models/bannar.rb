@@ -9,6 +9,8 @@ class Bannar
   field :url, type: String
   #是否激活
   field :active, type: Mongoid::Boolean
+  #结束时间
+  field :end_time, type: Date
 
   mount_uploader :avatar, AvatarUploader
 
