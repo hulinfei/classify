@@ -39,6 +39,24 @@
                   <span>用户管理</span>
                 </a>
               </li>
+              <li class="<%= "active" if controller_name == "categories" %>">
+                <a href="/categories" class="auto">
+                  <i class="fa fa-institution"></i>
+                  <span>分类管理</span>
+                </a>
+              </li>
+              <li class="<%= "active" if controller_name == "wx_users" %>">
+                <a href="/wx_users" class="auto">
+                  <i class="fa fa-institution"></i>
+                  <span>微信用户管理</span>
+                </a>
+              </li>
+              <li class="<%= "active" if controller_name == "articles" %>">
+                <a href="/articles" class="auto">
+                  <i class="fa fa-institution"></i>
+                  <span>文章管理</span>
+                </a>
+              </li>
           <li class="line dk hidden-folded"></li>
         </ul>
       </nav>

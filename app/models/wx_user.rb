@@ -5,4 +5,8 @@ class WxUser
   field :nickname, type: String
   # 用户openid
   field :openid, type: String
+  # 用户头像
+  mount_uploader :avatar, AvatarUploader
+
+  belongs_to :site
 end

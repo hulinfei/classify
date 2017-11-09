@@ -1,7 +1,10 @@
 class Category
   include Mongoid::Document
   include Mongoid::Timestamps
+  # 分类名称
   field :name, type: String
-  field :icon, type: String
+  # 分类图标
+  mount_uploader :icon, AvatarUploader
+
   has_many :articles
 end

@@ -1,10 +1,16 @@
 class Article
   include Mongoid::Document
   include Mongoid::Timestamps
+  # 标题
   field :title, type: String
+  # 描述
   field :description, type: String
+  # 发布人电话
   field :phone, type: String
+  # 阅读次数
   field :view, type: Integer
+  # 详情
   field :details, type: String
+
   belongs_to :category
 end
