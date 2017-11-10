@@ -1,6 +1,6 @@
 # 这里修改成你的的命名空间。
 namespace = "classify:weixin_authorize"
-redis = Redis.new(:host => "127.0.0.1", :port => "6379", :db => 15)
+redis = Redis.new(:host => "192.168.0.112", :port => "6379", :db => 15)
 
 # 每次重启时，会把当前的命令空间所有的access_token 清除掉。
 exist_keys = redis.keys("#{namespace}:*")

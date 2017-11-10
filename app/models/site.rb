@@ -25,9 +25,11 @@ class Site
   has_many :bannars
   has_many :wx_users
   has_many :bottom_menus
+  has_many :diymenus
   belongs_to :user
 
   def client
     @client ||= WeixinAuthorize::Client.new(weixin_appid, weixin_appsecret, redis_key: id.to_s)
   end
 end
+
