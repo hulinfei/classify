@@ -29,9 +29,9 @@ class Diymenu
   end
 
 
-  def build_menu
-    parent_menus = diymenus.roots
-    @menu = Jbuilder.encode do |json|
+  def self.build_menu(site)
+    parent_menus = Diymenu.roots
+    menu = Jbuilder.encode do |json|
       json.button(parent_menus) do |menu|
         json.name menu.name
         if menu.children.any?
@@ -46,6 +46,7 @@ class Diymenu
         end
       end
     end
+    site.client.create_menu(menu)
   end
 end
 

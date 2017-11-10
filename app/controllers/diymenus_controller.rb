@@ -13,25 +13,7 @@ class DiymenusController < BaseController
   end
 
   def sync
-    @current_site.client.delete_menu
-    parent_menus = Diymenu.roots
-    menu = Jbuilder.encode do |json|
-      json.button(parent_menus) do |menu|
-        json.name menu.name
-        if menu.children.any?
-          json.sub_button(menu.children) do |sub_menu|
-            json.type sub_menu.type
-            json.name sub_menu.name
-            sub_menu.button_type(json)
-          end
-        else
-          json.type menu.type
-          menu.button_type(json)
-        end
-      end
-    end
-    @current_site.client.create_menu(menu)
-   
+    menu = Diymenu.buid_menu(@current_site)
     redirect_to diymenus_path
   end
 
@@ -94,9 +76,4 @@ class DiymenusController < BaseController
     def diymenu_params
       params.require(:diymenu).permit(:name, :key, :url, :is_show, :parent_id ,:parent_ids)
     end
-
-
-
-
-
   end

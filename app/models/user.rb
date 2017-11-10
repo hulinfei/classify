@@ -41,5 +41,6 @@ class User
     role == 'admin'
   end
 
+
   belongs_to :site
 end
