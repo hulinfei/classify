@@ -1,12 +1,10 @@
-class BannarsController < ApplicationController
-  before_action :authenticate_user!
+class BannarsController <  BaseController
   before_action :set_bannar, only: [:show, :edit, :update, :destroy]
-  layout 'admin'
 
   # GET /bannars
   # GET /bannars.json
   def index
-    @bannars = Site.find_by(user_id: current_user).bannars.page params[:page]
+    @bannars = @current_site.bannars.page params[:page]
   end
 
   # GET /bannars/1
@@ -16,7 +14,7 @@ class BannarsController < ApplicationController
 
   # GET /bannars/new
   def new
-    @bannar = Site.find_by(user_id: current_user).bannars.build
+    @bannar = @current_site.bannars.build
   end
 
   # GET /bannars/1/edit
@@ -26,11 +24,11 @@ class BannarsController < ApplicationController
   # POST /bannars
   # POST /bannars.json
   def create
-    @bannar = Site.find_by(user_id: current_user).bannars.build(bannar_params)
+    @bannar = @current_site.bannars.build(bannar_params)
 
     respond_to do |format|
       if @bannar.save
-        format.html { redirect_to @bannar, notice: 'Bannar was successfully created.' }
+        format.html { redirect_to bannars_path, notice: 'Bannar was successfully created.' }
         format.json { render :show, status: :created, location: @bannar }
       else
         format.html { render :new }
@@ -44,7 +42,7 @@ class BannarsController < ApplicationController
   def update
     respond_to do |format|
       if @bannar.update(bannar_params)
-        format.html { redirect_to @bannar, notice: 'Bannar was successfully updated.' }
+        format.html { redirect_to bannars_path, notice: 'Bannar was successfully updated.' }
         format.json { render :show, status: :ok, location: @bannar }
       else
         format.html { render :edit }

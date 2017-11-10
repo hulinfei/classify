@@ -43,7 +43,7 @@ class SitesController < BaseController
   def update
     respond_to do |format|
       if @site.update(site_params)
-        format.html { redirect_to @site, notice: 'Site was successfully updated.' }
+        format.html { redirect_to sites_path, notice: 'Site was successfully updated.' }
         format.json { render :index, status: :ok, location: @sites }
       else
         format.html { render :edit }
@@ -70,6 +70,6 @@ class SitesController < BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def site_params
-      params.require(:site).permit(:name, :domain, :weixin_appid, :weixin_appsecret, :weixin_secret_key, :weixin_token)
+      params.require(:site).permit(:name, :domain, :weixin_appid, :weixin_appsecret, :weixin_secret_key, :weixin_token, :logo, :qr)
     end
 end

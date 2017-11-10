@@ -1,0 +1,10 @@
+<tr>
+  <td><%= bottom_menu.name %></td>
+   <td><img src="<%= bottom_menu.icon_url('30x30') %>" alt="" /></td>
+   <td><%= bottom_menu.created_at.strftime("%F") %></td>
+   <td>
+   	<%= link_to "查看", bottom_menu, class: "btn btn-default btn-xs" %>
+    <%= link_to "修改", edit_bottom_menu_path(bottom_menu), class: "btn btn-default btn-xs" %>
+    <%= link_to "删除", bottom_menu_path(bottom_menu), method: :delete, class: "btn btn-default btn-xs" %>
+  </td>
+</tr>

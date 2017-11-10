@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :bottom_menus
   mount WeixinRailsMiddleware::Engine, at: "/"
   devise_for :users, controllers: { sessions: 'users/sessions' }
   resources :bannars

@@ -1,28 +1,26 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    站点列表
+    底部菜单列表
     <div class="pull-right">
-      <%= link_to "新建站点", new_site_path, class: "btn btn-primary btn-xs" %>
+      <%= link_to "新建菜单", new_bottom_menu_path, class: "btn btn-primary btn-xs" %>
     </div>
   </div>
   <div class="table-responsive">
     <table class="table table-striped b-t b-light">
       <thead>
         <tr>
-          <th>站点名称</th>
-          <th>站点域名</th>
-          <th>微信APPID</th>
-          <th>token</th>
+          <th>名称</th>
+          <th>图标</th>
           <th>创建时间</th>
           <th>操作</th>
         </tr>
       </thead>
       <tbody>
-        <%= render(@sites) %>
+        <%= render(@bottom_menus) %>
       </tbody>
     </table>
   </div>
   <footer class="panel-footer">
-    <%= render partial: "shared/admin/paginate", locals: { object: @sites } %>
-  </footer>
+    <%= render partial: "shared/admin/paginate", locals: { object: @bottom_menus } %>
+  </jthgffooter>
 </div>

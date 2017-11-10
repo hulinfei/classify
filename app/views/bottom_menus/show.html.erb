@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+<div class="panel-heading font-bold">
+  查看菜单
+</div>
+<div class="panel-body">
+<p>
+  <strong>Name:</strong>
+  <%= @bottom_menu.name %>
+</p>
+
+<% if not @bottom_menu&.icon&.url.blank? %>
+<img src="<%= @bottom_menu.icon.url('30x30') %>">
+<% end %>
+<div class="line line-dashed b-b line-lg pull-in"></div>
+
+<%= link_to "修改", edit_bottom_menu_path(@bottom_menu), class: "btn btn-success btn-xs" %>
+<%= link_to "返回", bottom_menus_path,  class: "btn btn-success btn-xs" %>
+</div>
+</div>
+</div>
+

@@ -11,6 +11,14 @@
   <%= f.input :weixin_appsecret, label: "微信appsecret" %>
   <%= f.input :weixin_secret_key, label: "微信secret key " %>
   <%= f.input :weixin_token, label: "微信token" %>
+  <p>站点logo:</p>
+  <% if not @site&.logo&.url.blank? %>
+<img src="<%= @site.logo.url('30x30') %>">
+<% end %>
+<p>站点二维码:</p>
+<% if not @site&.qr&.url.blank? %>
+<img src="<%= @site.qr.url('30x30') %>">
+<% end %>
 <% end %>
 <div class="line line-dashed b-b line-lg pull-in"></div>
 <div class="col-sm-10 col-sm-offset-2">

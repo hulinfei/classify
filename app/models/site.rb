@@ -17,13 +17,14 @@ class Site
   #微信token
   field :weixin_token, type: String
   # 站点二维码
-  mount_uploader :avatar, AvatarUploader
+  mount_uploader :qr, AvatarUploader
   # 站点LOGO
-  #mount_uploader :avatar, AvatarUploader
+  mount_uploader :logo, AvatarUploader
 
 
   has_many :bannars
   has_many :wx_users
+  has_many :bottom_menus
   belongs_to :user
 
   def client
