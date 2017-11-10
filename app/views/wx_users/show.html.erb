@@ -4,13 +4,33 @@
 </div>
 <div class="panel-body">
   <%= simple_form_for(@wx_user, html: { multipart: true, class: "form-horizontal" }) do |f| %>
-    <%= f.input :nickname, label: "昵称", disabled: true %>
+    <%= f.input :subscribe, label: "订阅公众号", disabled: true %>
   <div class="line line-dashed b-b line-lg pull-in"></div>
    <%= f.input :openid, label: "openId", disabled: true %>
   <div class="line line-dashed b-b line-lg pull-in"></div>
-   <% if not @wx_user.avatar_url.blank?  %>
-          <%= image_tag @wx_user.avatar_url('30x30'), class: "img-thumbnail" %>
-    <% end %>
+  <%= f.input :nickname, label: "昵称", disabled: true %>
+  <div class="line line-dashed b-b line-lg pull-in"></div>
+   <%= f.input :sex, label: "性别", disabled: true %>
+  <div class="line line-dashed b-b line-lg pull-in"></div>
+   <%= f.input :language, label: "语言", disabled: true %>
+  <div class="line line-dashed b-b line-lg pull-in"></div>
+   <%= f.input :city, label: "城市", disabled: true %>
+  <div class="line line-dashed b-b line-lg pull-in"></div>
+  <%= f.input :province, label: "省份", disabled: true %>
+  <div class="line line-dashed b-b line-lg pull-in"></div>
+   <%= f.input :country,:as => :string ,label: "国家", disabled: true %>
+  <div class="line line-dashed b-b line-lg pull-in"></div>
+   <%= f.input :headimgurl, label: "头像", disabled: true %>
+  <div class="line line-dashed b-b line-lg pull-in"></div>
+   <%= f.input :subscribe_time, label: "关注时间戳", disabled: true %>
+  <div class="line line-dashed b-b line-lg pull-in"></div>
+   <%= f.input :unionid, label: "unionid", disabled: true %>
+  <div class="line line-dashed b-b line-lg pull-in"></div>
+   <%= f.input :remark, label: "备注", disabled: true %>
+  <div class="line line-dashed b-b line-lg pull-in"></div>
+  <%= f.input :groupid, label: "分组id", disabled: true %>
+  <div class="line line-dashed b-b line-lg pull-in"></div>
+   <%= f.input :tagid_list, label: "标签列表", disabled: true %>
   <div class="line line-dashed b-b line-lg pull-in"></div>
   <div class="col-sm-10 col-sm-offset-2">
     <%= link_to "返 回", wx_users_path, class: "btn btn-default" %>

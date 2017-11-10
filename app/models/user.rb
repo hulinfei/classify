@@ -1,7 +1,7 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
-  # ROLES = %i[admin user]
+  ROLES = %i[admin user]
   paginates_per 2
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -9,6 +9,7 @@ class User
 
   ## Database authenticatable
   field :email,              type: String, default: ""
+  field :role,              type: String
   field :encrypted_password, type: String, default: ""
 
   ## Recoverable
@@ -36,5 +37,9 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
-  has_many :sites
+  def admin?
+    role == 'admin'
+  end
+
+  belongs_to :site
 end

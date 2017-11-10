@@ -33,12 +33,21 @@
                 </a>
               </li>
             <%# end %>
-              <li class="<%= "active" if controller_name == "users" %>">
-                <a href="/users" class="auto">
-                  <i class="fa fa-institution"></i>
-                  <span>用户管理</span>
-                </a>
-              </li>
+              <% if can? :manage, User %>
+                <li class="<%= "active" if controller_name == "users" %>">
+                  <a href="/managers" class="auto">
+                    <i class="fa fa-institution"></i>
+                    <span>用户管理</span>
+                  </a>
+                </li>
+              <% else %>
+                <li class="<%= "active" if controller_name == "users" %>">
+                  <a href="/managers" class="auto">
+                    <i class="fa fa-institution"></i>
+                    <span>账号管理</span>
+                  </a>
+                </li>
+              <% end %>
               <li class="<%= "active" if controller_name == "categories" %>">
                 <a href="/categories" class="auto">
                   <i class="fa fa-institution"></i>

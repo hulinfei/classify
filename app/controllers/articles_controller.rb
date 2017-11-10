@@ -1,8 +1,10 @@
-class BaseController < ApplicationController
+class ArticlesController < BaseController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
     @articles = Article.all.page params[:page]
+    @articles = @articles.where(category_id: params[:category_id]) unless params[:category_id].blank?
+    @articles = @articles.page params[:page]
   end
 
   def show
@@ -55,6 +57,6 @@ class BaseController < ApplicationController
     end
 
     def article_params
-      params.require(:article).permit(:title, :description, :phone , :view, :details)
+      params.require(:article).permit(:title, :description, :phone , :view, :details, :category_id)
     end
 end

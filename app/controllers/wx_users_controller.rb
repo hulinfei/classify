@@ -1,24 +1,26 @@
-class WxUsersController < ApplicationController
-  before_action :authenticate_user!
+class WxUsersController < BaseController
   before_action :set_wx_user, only: [:show, :edit, :update, :destroy]
-  layout 'admin'
 
   def index
-    @wx_users = WxUser.all.page params[:page]
+    if current_user.role == "admin"
+      @wx_users = WxUser.all.page params[:page]
+    else
+      @wx_users = @current_site.wx_users.all.page params[:page]
+    end
   end
 
   def show
   end
 
   def new
-    @wx_user = Site.find_by(user_id: current_user).wx_users.build
+    @wx_user = @current_site.wx_users.new
   end
 
   def edit
   end
 
   def create
-    @wx_user = Site.find_by(user_id: current_user).wx_users.build(wx_user_params)
+    @wx_user = @current_site.wx_users.new(wx_user_params)
 
     respond_to do |format|
       if @wx_user.save
@@ -57,6 +59,6 @@ class WxUsersController < ApplicationController
     end
 
     def wx_user_params
-      params.require(:wx_user).permit(:nickname, :openid, :avatar)
+      params.require(:wx_user).permit(:subscribe, :openid, :nickname, :sex, :language, :city, :province, :country, :headimgurl, :subscribe_time, :unionid, :remark, :groupid, :tagid_list)
     end
 end

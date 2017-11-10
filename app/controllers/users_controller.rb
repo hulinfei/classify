@@ -1,24 +1,26 @@
-class UsersController < ApplicationController
-  before_action :authenticate_user!
+class UsersController < BaseController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  layout 'admin'
 
   def index
-    @users = User.all.page params[:page]
+    if current_user.role == "admin"
+      @users = User.all.page params[:page]
+    else
+      @users = User.where(id: current_user.id).page params[:page]
+    end
   end
 
   def show
   end
 
   def new
-    @user = User.new#current_user.users.build
+    @user = @current_site.users.new
   end
 
   def edit
   end
 
   def create
-    @user = User.new(user_params)
+    @user = @current_site.users.new(user_params)
 
     respond_to do |format|
       if @user.save
@@ -57,6 +59,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation, :role)
     end
 end

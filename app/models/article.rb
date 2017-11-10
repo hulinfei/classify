@@ -14,5 +14,6 @@ class Article
   # 状态 0 待审核 1 已审核
   field :status, type: Integer, default: 0
 
+  belongs_to :wx_user
   belongs_to :category
 end
