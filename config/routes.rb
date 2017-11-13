@@ -15,5 +15,9 @@ Rails.application.routes.draw do
   resources :articles
 	root to: "sites#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
+  namespace :api, format: 'json' do
+    namespace :v1 do
+      resources :bannars, only: [:index]
+    end
+  end
 end
