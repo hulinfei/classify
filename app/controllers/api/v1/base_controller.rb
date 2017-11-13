@@ -7,7 +7,7 @@ class Api::V1::BaseController < ActionController::API
   private
 
   def set_current_site
-  	domain = request.domain
+  	domain = request.host
   	@current_site = Site.find_by(domain: domain)
   	if @current_site.nil?
   		render json: { status: '-100', notice: '对不起你访问的站点不存在' }

@@ -1,10 +1,11 @@
 class BannarsController <  BaseController
-  before_action :set_bannar, only: [:show, :edit, :update, :destroy]
+  before_action :set_bannar, only: [:show, :edit, :update, :destroy, :up, :down]
 
   # GET /bannars
   # GET /bannars.json
   def index
     @bannars = @current_site.bannars.page params[:page]
+     @bannars = @bannars.order_by(position: "asc")
   end
 
   # GET /bannars/1
@@ -19,6 +20,16 @@ class BannarsController <  BaseController
 
   # GET /bannars/1/edit
   def edit
+  end
+
+  def up
+    @bannar.move_higher!
+    redirect_to bannars_path
+  end
+
+  def down
+    @bannar.move_lower!
+    redirect_to bannars_path
   end
 
   # POST /bannars

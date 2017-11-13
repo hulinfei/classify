@@ -47,15 +47,15 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+gem 'rack-cors', :require => 'rack/cors'
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # mongodb
 gem 'mongoid'
 gem 'mongoid-tree', :require => 'mongoid/tree'
 # 分页
 gem 'kaminari'
 gem 'kaminari-mongoid'
+gem 'mongoid_orderable'
 # 登陆
 gem 'devise'
 # 图片上传

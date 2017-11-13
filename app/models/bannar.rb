@@ -1,6 +1,7 @@
 class Bannar
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Orderable
   paginates_per 5
 
   #标题
@@ -19,4 +20,5 @@ class Bannar
   mount_uploader :avatar, AvatarUploader
 
   belongs_to :site
+  orderable
 end
