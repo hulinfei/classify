@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fieldname: MyString
+  fieldtype: MyString
+  optype: MyString
+  validation_rule: MyString
+
+two:
+  fieldname: MyString
+  fieldtype: MyString
+  optype: MyString
+  validation_rule: MyString

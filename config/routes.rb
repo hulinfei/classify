@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   mount WeixinRailsMiddleware::Engine, at: "/"
   devise_for :users, controllers: { sessions: 'users/sessions' }
   resources :diymenus do
@@ -26,6 +26,9 @@ Rails.application.routes.draw do
       resources :bannars, only: [:index]
       resources :sites
       resources :bottom_menus
+      resources :categories, only: [:index]
+      resources :wx_users, only: [:index]
+      resources :articles, only: [:index]
     end
   end
 end
