@@ -15,7 +15,6 @@ class Info
 
   has_many :info_types
   belongs_to :info_class
-  belongs_to :info
   belongs_to :wx_user
   belongs_to :category
 end
