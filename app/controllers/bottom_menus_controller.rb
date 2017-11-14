@@ -81,6 +81,6 @@ class BottomMenusController < BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bottom_menu_params
-      params.require(:bottom_menu).permit(:name, :icon, :url)
+      params.require(:bottom_menu).permit(:name, :icon, :url, :active_icon)
     end
 end

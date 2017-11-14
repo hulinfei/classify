@@ -3,7 +3,7 @@
   文章信息
 </div>
 <div class="panel-body">
-  <%= simple_form_for(@article, html: { multipart: true, class: "form-horizontal" }) do |f| %>
+  <%= simple_form_for(@info, html: { multipart: true, class: "form-horizontal" }) do |f| %>
     <%= f.input :title, label: "标题", disabled: true %>
   <div class="line line-dashed b-b line-lg pull-in"></div>
     <%= f.select :category_id, Category.all.map { |c| [c.name, c.id] }%>

@@ -2,7 +2,7 @@
   <div class="panel-heading">
       信息列表
     <div class="pull-right">
-      <%= link_to "新建", new_article_path, class: "btn btn-primary btn-xs" %>
+      <%= link_to "新建", new_info_path, class: "btn btn-primary btn-xs" %>
     </div>
   </div>
   <div class="table-responsive">
@@ -20,21 +20,21 @@
         </tr>
       </thead>
       <tbody>
-       <% @articles.each do |article| %>
+       <% @infos.each do |info| %>
       <tr>
-        <td><%= article.title %></td>
-        <td><% if not article.category_id.blank? %>
-            <%= Category.find_by(id: article.category_id).name %>
+        <td><%= info.title %></td>
+        <td><% if not info.category_id.blank? %>
+            <%= Category.find_by(id: info.category_id).name %>
             <% end %>
         </td>
-        <td><%= article.description %></td>
-        <td><%= article.phone %></td>
-        <td><%= article.view %></td>
-        <td><%= article.status %></td>
-        <td><%= article.created_at.strftime("%F %T") %></td>
-        <td><%= link_to '查看', article, class: "btn btn-default btn-xs" %>
-        <%= link_to '修改', edit_article_path(article), class: "btn btn-default btn-xs" %>
-        <%= link_to '删除', article_path(article), method: :delete, class: "btn btn-default btn-xs"  %>
+        <td><%= info.description %></td>
+        <td><%= info.phone %></td>
+        <td><%= info.view %></td>
+        <td><%= info.status %></td>
+        <td><%= info.created_at.strftime("%F %T") %></td>
+        <td><%= link_to '查看', info, class: "btn btn-default btn-xs" %>
+        <%= link_to '修改', edit_info_path(info), class: "btn btn-default btn-xs" %>
+        <%= link_to '删除', info_path(info), method: :delete, class: "btn btn-default btn-xs"  %>
         </td>
       </tr>
       <% end %>
@@ -42,6 +42,6 @@
     </table>
   </div>
   <footer class="panel-footer">
-    <%= render partial: "shared/admin/paginate", locals: { object: @articles } %>
+    <%= render partial: "shared/admin/paginate", locals: { object: @infos } %>
   </footer>
 </div>

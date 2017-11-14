@@ -3,8 +3,8 @@ class InfosController < BaseController
 
   def index
     @infos = Info.all.page params[:page]
-    @infos = @infos.where(category_id: params[:category_id]) unless params[:category_id].blank?
-    @infos = @infos.page params[:page]
+    #@infos = @infos.where(category_id: params[:category_id]) unless params[:category_id].blank?
+    #@infos = @infos.page params[:page]
   end
 
   def show
@@ -22,7 +22,7 @@ class InfosController < BaseController
 
     respond_to do |format|
       if @info.save
-        format.html { redirect_to @info, notice: 'Info was successfully created.' }
+        format.html { redirect_to infos_path, notice: 'Info was successfully created.' }
         format.json { render :show, status: :created, location: @info }
       else
         format.html { render :new }
@@ -34,7 +34,7 @@ class InfosController < BaseController
   def update
     respond_to do |format|
       if @info.update(info_params)
-        format.html { redirect_to @info, notice: 'Info was successfully updated.' }
+        format.html { redirect_to infos_path, notice: 'Info was successfully updated.' }
         format.json { render :show, status: :ok, location: @info }
       else
         format.html { render :edit }
