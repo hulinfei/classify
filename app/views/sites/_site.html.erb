@@ -7,6 +7,8 @@
    <td>
    	<%= link_to "查看", site, class: "btn btn-default btn-xs" %>
     <%= link_to "修改", edit_site_path(site), class: "btn btn-default btn-xs" %>
+    <%if can? :manage, site%>
     <%= link_to "删除", site_path(site), method: :delete, class: "btn btn-default btn-xs" %>
+    <% end %>
   </td>
 </tr>

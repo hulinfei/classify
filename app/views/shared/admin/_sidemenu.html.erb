@@ -16,22 +16,23 @@
           <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
             <span>平台管理</span>
           </li>
-            <% if can? :manage, :update, :read, Site %>
+            <% if can?  :manage, Site %>
               <li class="<%= "active" if controller_name == "sites" %>">
                 <a href="/sites" class="auto">
                   <i class="glyphicon glyphicon-blackboard"></i>
                   <span>多站点管理</span>
                 </a>
               </li>
-            <% elsif can? :manage, Site %>
-              <li class="<%= "active" if controller_name == "bannars" %>">
+            <% elsif can? :update, Site %>
+              <li class="<%= "active" if controller_name == "sites" %>">
+                 <a href="/sites/<%= current_user.site.id %>/edit" class="auto">
                   <i class="fa fa-institution"></i>
                   <span>站点管理</span>
                 </a>
               </li>
             <% end %>
             <% if can? :manage, Bannar %>
-              <li class="<%= "active" if controller_name == "managers" %>">
+              <li class="<%= "active" if controller_name == "bannars" %>">
                 <a href="/bannars" class="auto">
                   <i class="glyphicon glyphicon-bullhorn"></i>
                   <span>广告管理</span>
@@ -53,48 +54,62 @@
                   </a>
                 </li>
               <% end %>
+              <% if can? :manage, Category %>
               <li class="<%= "active" if controller_name == "categories" %>">
                 <a href="/categories" class="auto">
                   <i class="glyphicon glyphicon-th-list"></i>
                   <span>分类管理</span>
                 </a>
               </li>
+              <% end %>
+              <% if can? :manage, WxUser %>
               <li class="<%= "active" if controller_name == "wx_users" %>">
                 <a href="/wx_users" class="auto">
                   <i class="glyphicon glyphicon-phone"></i>
                   <span>微信用户管理</span>
                 </a>
               </li>
+              <% end %>
+              <% if can? :manage, Info %>
               <li class="<%= "active" if controller_name == "infos" %>">
                 <a href="/infos" class="auto">
                   <i class="glyphicon glyphicon-comment"></i>
                   <span>信息管理</span>
                 </a>
               </li>
+              <% end %>
+              <% if can? :manage, InfoClass %>
               <li class="<%= "active" if controller_name == "info_classes" %>">
                 <a href="/info_classes" class="auto">
                   <i class="glyphicon glyphicon-list-alt"></i>
                   <span>信息分类管理</span>
                 </a>
               </li>
+              <% end %>
+              <% if can? :manage, InfoType %>
               <li class="<%= "active" if controller_name == "info_types" %>">
                 <a href="/info_types" class="auto">
                   <i class="glyphicon glyphicon-tasks"></i>
                   <span>信息类型管理</span>
                 </a>
               </li>
+              <% end %>
+              <% if can? :manage, BottomMenu %>
                <li class="<%= "active" if controller_name == "bottom_menus" %>">
                 <a href="/bottom_menus" class="auto">
                   <i class="glyphicon glyphicon-credit-card"></i>
                   <span>底部菜单管理</span>
                 </a>
               </li>
+              <% end %>
+              <% if can? :manage, Diymenu %>
               <li class="<%= "active" if controller_name == "diymenus" %>">
                 <a href="/diymenus" class="auto">
                   <i class="glyphicon glyphicon-menu-hamburger"></i>
                   <span>微信菜单管理</span>
                 </a>
               </li>
+              <% end %>
           <li class="line dk hidden-folded"></li>
         </ul>
       </nav>

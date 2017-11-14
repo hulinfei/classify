@@ -12,14 +12,17 @@ class Ability
          can :manage, Bannar
          can :manage, BottomMenu
          can :manage, Category
-         can [:update, :read], Site, itself: user
-         can [:update, :read], User, itself: user
+         can [:update, :read], Site
+         can :manage, User
          can :manage, WxUser
+         can :manage, InfoType
+         can :manage, InfoClass
        elsif user.role == 'user'
          can :manage, Info
          can :manage, Bannar
          can :manage, BottomMenu
          can :manage, Category
+         can [:update, :read], User, itself: user
        end
     #
     # The first argument to `can` is the action you are giving the user

@@ -5,7 +5,11 @@ class SitesController < BaseController
   # GET /sites
   # GET /sites.json
   def index
+    if can? :manage, Site
     @sites = Site.all.page params[:page]
+    elsif can? :update, Site
+      @sites = Site.where(id: current_user.site_id).page params[:page]
+   end
   end
 
   # GET /sites/1

@@ -1,9 +1,11 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     站点列表
+     <%if can? :manage, Site%>
     <div class="pull-right">
       <%= link_to "新建站点", new_site_path, class: "btn btn-primary btn-xs" %>
     </div>
+    <% end %>
   </div>
   <div class="table-responsive">
     <table class="table table-striped b-t b-light">
