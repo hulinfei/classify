@@ -2,15 +2,19 @@ class InfosController < BaseController
   before_action :set_info, only: [:show, :edit, :update, :destroy]
 
   def index
-    @infos = Info.all.page params[:page]
-    #@infos = @infos.where(category_id: params[:category_id]) unless params[:category_id].blank?
-    #@infos = @infos.page params[:page]
+    @infos = Info.all
+    if params[:category_id]
+      @infos = @infos.where(category_id: params[:category_id])
+      @info_types = Category.find(params[:category_id]).info_class.info_types
+    end
+    @infos = @infos.page params[:page]
   end
 
   def show
   end
 
   def new
+    @info_types = Category.find(params[:category_id]).info_class.info_types
     @info = Info.new#current_info.infos.build
   end
 
@@ -18,7 +22,14 @@ class InfosController < BaseController
   end
 
   def create
-    @info = Info.new(info_params)
+    # info_p = info_params
+    # @info_types = Category.find(params[:category_id]).info_class.info_types
+    #  @info_types.each do |info_type|
+    #   info_p.permit(info_type.fieldname.to_sym)
+    #  end
+    ActionController::Parameters.permit_all_parameters = true
+
+    @info = Info.new(params.require(:info).permit!)
 
     respond_to do |format|
       if @info.save

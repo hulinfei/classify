@@ -2,7 +2,7 @@
   <div class="panel-heading">
       信息列表
     <div class="pull-right">
-      <%= link_to "新建", new_info_path, class: "btn btn-primary btn-xs" %>
+      <%= link_to "新建", new_info_path(category_id: params[:category_id]), class: "btn btn-primary btn-xs" %>
     </div>
   </div>
   <div class="table-responsive">
@@ -13,10 +13,16 @@
           <th>所属分类</th>
           <th>描述</th>
           <th>电话</th>
+          <% if @info_types  %>
+          <% @info_types.each do |info_type| %>
+            <th><%= info_type.name %></th>
+          <% end %>
+          <% end %>
           <th>阅读次数</th>
           <th>状态</th>
-          <th style="width:120px;">创建时间</th>
+          <th>创建时间</th>
           <th>操作</th>
+          
         </tr>
       </thead>
       <tbody>
@@ -29,6 +35,11 @@
         </td>
         <td><%= info.description %></td>
         <td><%= info.phone %></td>
+        <% if @info_types  %>
+        <% @info_types.each do |info_type| %>
+        <td><%= info[info_type.fieldname.to_sym] %></td>
+        <% end %>
+        <% end %>
         <td><%= info.view %></td>
         <td><%= info.status %></td>
         <td><%= info.created_at.strftime("%F %T") %></td>
