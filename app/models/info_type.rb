@@ -1,6 +1,8 @@
 class InfoType
   include Mongoid::Document
   include Mongoid::Timestamps
+  # 表头名
+  field :name, type: String
   # 字段名
   field :fieldname, type: String
   # 字段类型
