@@ -30,6 +30,6 @@ class WxUser
   # 用户被打上的标签ID列表
   field :tagid_list, type: Array
 
-  has_many :articles
+  has_many :infos
   belongs_to :site
 end
