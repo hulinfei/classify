@@ -2,7 +2,7 @@ class UsersController < BaseController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    if current_user.role == "admin"
+    if current_user.role == "super"
       @users = User.all.page params[:page]
     else
       @users = User.where(id: current_user.id).page params[:page]

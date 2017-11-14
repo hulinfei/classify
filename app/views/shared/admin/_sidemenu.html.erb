@@ -23,8 +23,7 @@
                   <span>多站点管理</span>
                 </a>
               </li>
-            <% end %>
-            <% if can? :manage, Site %>
+            <% elsif can? :manage, Site %>
               <li class="<%= "active" if controller_name == "bannars" %>">
                   <i class="fa fa-institution"></i>
                   <span>站点管理</span>

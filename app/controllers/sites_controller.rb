@@ -15,7 +15,9 @@ class SitesController < BaseController
 
   # GET /sites/new
   def new
-    @site = current_user.sites.build
+     if can? :manage, Site
+    @site = Site.new
+    end
   end
 
   # GET /sites/1/edit
