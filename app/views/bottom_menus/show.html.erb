@@ -11,6 +11,9 @@
 <% if not @bottom_menu&.icon&.url.blank? %>
 <img src="<%= @bottom_menu.icon.url('30x30') %>">
 <% end %>
+<% if not @bottom_menu&.icon&.url.blank? %>
+<img src="<%= @bottom_menu.active_icon.url('30x30') %>">
+<% end %>
 <div class="line line-dashed b-b line-lg pull-in"></div>
 
 <%= link_to "修改", edit_bottom_menu_path(@bottom_menu), class: "btn btn-success btn-xs" %>

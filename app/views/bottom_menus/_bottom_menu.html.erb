@@ -3,6 +3,7 @@
    <td><%= bottom_menu.url %></td>
    <td><%= bottom_menu.position %></td>
    <td><img src="<%= bottom_menu.icon_url('30x30') %>" alt="" /></td>
+   <td><img src="<%= bottom_menu.active_icon_url('30x30') %>" alt="" /></td>
    <td><%= bottom_menu.created_at.strftime("%F") %></td>
    <td>
    	<%= link_to "查看", bottom_menu, class: "btn btn-default btn-xs" %>

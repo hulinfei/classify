@@ -16,23 +16,29 @@
           <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
             <span>平台管理</span>
           </li>
-          <%# if current_manager.role == 'super_admin' %>
-            <%# if can? :manage, Site %>
+            <% if can? :manage, :update, :read, Site %>
               <li class="<%= "active" if controller_name == "sites" %>">
                 <a href="/sites" class="auto">
                   <i class="glyphicon glyphicon-blackboard"></i>
                   <span>多站点管理</span>
                 </a>
               </li>
-            <%# end %>
-            <%# if can? :manage, Manager %>
+            <% end %>
+            <% if can? :manage, Manager %>
               <li class="<%= "active" if controller_name == "bannars" %>">
+                  <i class="fa fa-institution"></i>
+                  <span>站点管理</span>
+                </a>
+              </li>
+            <% end %>
+            <% if can? :manage, Bannar %>
+              <li class="<%= "active" if controller_name == "managers" %>">
                 <a href="/bannars" class="auto">
                   <i class="glyphicon glyphicon-bullhorn"></i>
                   <span>广告管理</span>
                 </a>
               </li>
-            <%# end %>
+            <% end %>
               <% if can? :manage, User %>
                 <li class="<%= "active" if controller_name == "users" %>">
                   <a href="/managers" class="auto">

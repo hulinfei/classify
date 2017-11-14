@@ -7,6 +7,12 @@
 </div>
 <% end %>
 <%= f.input :icon, label: "上传图标" %>
+<% if not @bottom_menu.active_icon_url.blank?  %>
+<div class="col-sm-10 col-sm-offset-2 m-b">
+  <%= image_tag @bottom_menu.active_icon_url('30x30'), class: "img-thumbnail" %>
+</div>
+<% end %>
+<%= f.input :active_icon, label: "激活图标" %>
   <div class="line line-dashed b-b line-lg pull-in"></div>
   <div class="col-sm-10 col-sm-offset-2">
     <%= f.button :submit, "提 交", class: "btn btn-primary" %>

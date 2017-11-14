@@ -5,16 +5,22 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
        user ||= User.new # guest user (not logged in)
-       if user.admin?
-         can :manage, :all
-       elsif user.role == 'user'
-         can :manage, Article
+       if user.super?
+        can :manage, Site
+        can :manage, User
+       elsif user.role == 'admin'
+         can :manage, Info
          can :manage, Bannar
          can :manage, BottomMenu
          can :manage, Category
          can [:update, :read], Site, itself: user
          can [:update, :read], User, itself: user
          can :manage, WxUser
+       elsif user.role == 'user'
+         can :manage, Info
+         can :manage, Bannar
+         can :manage, BottomMenu
+         can :manage, Category
        end
     #
     # The first argument to `can` is the action you are giving the user

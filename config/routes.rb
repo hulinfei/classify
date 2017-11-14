@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :articles
   resources :info_classes
   resources :info_types
+  resources :infos
 	root to: "sites#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api, format: 'json' do
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
       resources :categories, only: [:index]
       resources :wx_users, only: [:index]
       resources :articles, only: [:index]
+      resources :infos
     end
   end
 end
