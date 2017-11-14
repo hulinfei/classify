@@ -1,10 +1,11 @@
 class BottomMenusController < BaseController
-  before_action :set_bottom_menu, only: [:show, :edit, :update, :destroy]
+  before_action :set_bottom_menu, only: [:show, :edit, :update, :destroy, :up, :down]
 
   # GET /bottom_menus
   # GET /bottom_menus.json
   def index
     @bottom_menus = @current_site.bottom_menus.all.page params[:page]
+    @bottom_menus = @bottom_menus.order_by(position: "asc")
   end
 
   # GET /bottom_menus/1
@@ -21,6 +22,17 @@ class BottomMenusController < BaseController
   def edit
   end
 
+  def up
+    @bottom_menu.move_higher!
+    redirect_to bottom_menus_path
+  end
+
+  def down
+    @bottom_menu.move_lower!
+    redirect_to bottom_menus_path
+  end
+
+
   # POST /bottom_menus
   # POST /bottom_menus.json
   def create
@@ -28,7 +40,7 @@ class BottomMenusController < BaseController
 
     respond_to do |format|
       if @bottom_menu.save
-        format.html { redirect_to @bottom_menu, notice: 'Bottom menu was successfully created.' }
+        format.html { redirect_to bottom_menus_path, notice: 'Bottom menu was successfully created.' }
         format.json { render :show, status: :created, location: @bottom_menu }
       else
         format.html { render :new }
@@ -42,7 +54,7 @@ class BottomMenusController < BaseController
   def update
     respond_to do |format|
       if @bottom_menu.update(bottom_menu_params)
-        format.html { redirect_to @bottom_menu, notice: 'Bottom menu was successfully updated.' }
+        format.html { redirect_to bottom_menus_path, notice: 'Bottom menu was successfully updated.' }
         format.json { render :show, status: :ok, location: @bottom_menu }
       else
         format.html { render :edit }
@@ -69,6 +81,6 @@ class BottomMenusController < BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bottom_menu_params
-      params.require(:bottom_menu).permit(:name, :icon)
+      params.require(:bottom_menu).permit(:name, :icon, :url)
     end
 end

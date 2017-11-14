@@ -1,5 +1,6 @@
 <%= simple_form_for([@bottom_menu], html: { multipart: true, class: "form-horizontal" }) do |f| %>
   <%= f.input :name, label: "底部菜单名称" %>
+  <%= f.input :url, label: "URL" %>
  <% if not @bottom_menu.icon_url.blank?  %>
 <div class="col-sm-10 col-sm-offset-2 m-b">
   <%= image_tag @bottom_menu.icon_url('30x30'), class: "img-thumbnail" %>

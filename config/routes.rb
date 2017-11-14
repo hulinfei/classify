@@ -7,7 +7,12 @@ Rails.application.routes.draw do
         post 'sync'
       end
   end
-  resources :bottom_menus
+  resources :bottom_menus do
+    member do
+        post 'down'
+        post 'up'
+      end
+  end
   resources :bannars do
      member do
         post 'down'

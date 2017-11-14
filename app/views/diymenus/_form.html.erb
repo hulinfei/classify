@@ -1,6 +1,6 @@
 <%= simple_form_for(@diymenu, html: { multipart: true, class: "form-horizontal" }) do |f| %>
   <div class="col-sm-offset-2">
-  <%= f.select :parent_id, Diymenu.where(depth: 0).map { |c| [c.name, c.id] }, include_blank: true %>
+    <%= f.select :parent_id, Diymenu.where(depth: 0).map { |c| [c.name, c.id] }, include_blank: true %>
     <%= f.input :name, label: "名称" %>
     <%= f.input :key, label: "关键字" %>
     <%= f.input :url, label: "URL" %>
