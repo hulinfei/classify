@@ -37,8 +37,8 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
-  def admin?
-    role == 'admin'
+  def super?
+    role == 'super'
   end
 
 

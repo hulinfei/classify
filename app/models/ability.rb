@@ -6,8 +6,7 @@ class Ability
     #
        user ||= User.new # guest user (not logged in)
        if user.super?
-        can :manage, Site
-        can :manage, User
+        can :manage, :all
        elsif user.role == 'admin'
          can :manage, Info
          can :manage, Bannar
