@@ -27,8 +27,9 @@ module Classify
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
-
-
+    # 设置为北京时间
+    config.time_zone = "Beijing"
+    # 跨域
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'

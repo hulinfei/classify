@@ -47,6 +47,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+# 跨域
 gem 'rack-cors', :require => 'rack/cors'
 
 # mongodb
@@ -70,7 +71,7 @@ gem 'cancancan', '~> 2.0'
 gem 'sidekiq'
 gem 'redis'
 gem "sidekiq-cron"
-
+# 微信相关
 gem 'weixin_rails_middleware', git: "https://github.com/lanrion/weixin_rails_middleware.git" 
 gem 'weixin_authorize', git: "https://github.com/lanrion/weixin_authorize.git"
 gem "redis-namespace"
