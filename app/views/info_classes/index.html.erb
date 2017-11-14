@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+      信息分类列表
+    <div class="pull-right">
+      <%= link_to "新建分类", new_info_class_path, class: "btn btn-primary btn-xs" %>
+    </div>
+  </div>
+   <div class="table-responsive">
+    <table class="table table-striped b-t b-light">
+      <thead>
+        <tr>
+          <th>分类名</th>
+          <th style="width:120px;">创建时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @info_classes.each do |info_class| %>
+          <tr>
+            <td><%= info_class.name %></td>
+            <td><%= info_class.created_at.strftime("%F %T")%></td>
+            <td>
+              <%= link_to "查看", info_class, class: "btn btn-default btn-xs" %>
+              <%= link_to "修改", edit_info_class_path(info_class), class: "btn btn-default btn-xs" %>
+              <% if can? :delete, User %>
+              <%= link_to "删除", info_class_path(info_class), method: :delete, class: "btn btn-default btn-xs" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <footer class="panel-footer">
+    <%#= paginate @info_classes, views_prefix: 'admin',theme: 'angulr' %>
+    <%= render partial: "shared/admin/paginate", locals: { object: @info_classes } %>
+  </footer>
+</div>

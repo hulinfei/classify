@@ -20,15 +20,15 @@
             <%# if can? :manage, Site %>
               <li class="<%= "active" if controller_name == "sites" %>">
                 <a href="/sites" class="auto">
-                  <i class="fa fa-institution"></i>
+                  <i class="glyphicon glyphicon-blackboard"></i>
                   <span>多站点管理</span>
                 </a>
               </li>
             <%# end %>
             <%# if can? :manage, Manager %>
-              <li class="<%= "active" if controller_name == "managers" %>">
+              <li class="<%= "active" if controller_name == "bannars" %>">
                 <a href="/bannars" class="auto">
-                  <i class="fa fa-institution"></i>
+                  <i class="glyphicon glyphicon-bullhorn"></i>
                   <span>广告管理</span>
                 </a>
               </li>
@@ -36,45 +36,57 @@
               <% if can? :manage, User %>
                 <li class="<%= "active" if controller_name == "users" %>">
                   <a href="/managers" class="auto">
-                    <i class="fa fa-institution"></i>
+                    <i class="glyphicon glyphicon-user"></i>
                     <span>用户管理</span>
                   </a>
                 </li>
               <% else %>
                 <li class="<%= "active" if controller_name == "users" %>">
                   <a href="/managers" class="auto">
-                    <i class="fa fa-institution"></i>
+                    <i class="glyphicon glyphicon-user"></i>
                     <span>账号管理</span>
                   </a>
                 </li>
               <% end %>
               <li class="<%= "active" if controller_name == "categories" %>">
                 <a href="/categories" class="auto">
-                  <i class="fa fa-institution"></i>
+                  <i class="glyphicon glyphicon-th-list"></i>
                   <span>分类管理</span>
                 </a>
               </li>
               <li class="<%= "active" if controller_name == "wx_users" %>">
                 <a href="/wx_users" class="auto">
-                  <i class="fa fa-institution"></i>
+                  <i class="glyphicon glyphicon-phone"></i>
                   <span>微信用户管理</span>
                 </a>
               </li>
               <li class="<%= "active" if controller_name == "infos" %>">
                 <a href="/infos" class="auto">
-                  <i class="fa fa-institution"></i>
+                  <i class="glyphicon glyphicon-comment"></i>
                   <span>信息管理</span>
+                </a>
+              </li>
+              <li class="<%= "active" if controller_name == "info_classes" %>">
+                <a href="/info_classes" class="auto">
+                  <i class="glyphicon glyphicon-list-alt"></i>
+                  <span>信息分类管理</span>
+                </a>
+              </li>
+              <li class="<%= "active" if controller_name == "info_types" %>">
+                <a href="/info_types" class="auto">
+                  <i class="glyphicon glyphicon-tasks"></i>
+                  <span>信息类型管理</span>
                 </a>
               </li>
                <li class="<%= "active" if controller_name == "bottom_menus" %>">
                 <a href="/bottom_menus" class="auto">
-                  <i class="fa fa-institution"></i>
+                  <i class="glyphicon glyphicon-credit-card"></i>
                   <span>底部菜单管理</span>
                 </a>
               </li>
               <li class="<%= "active" if controller_name == "diymenus" %>">
                 <a href="/diymenus" class="auto">
-                  <i class="fa fa-institution"></i>
+                  <i class="glyphicon glyphicon-menu-hamburger"></i>
                   <span>微信菜单管理</span>
                 </a>
               </li>

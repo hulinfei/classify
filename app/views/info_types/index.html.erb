@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+      信息类型列表
+    <div class="pull-right">
+      <%= link_to "新建类型", new_info_type_path, class: "btn btn-primary btn-xs" %>
+    </div>
+  </div>
+   <div class="table-responsive">
+    <table class="table table-striped b-t b-light">
+      <thead>
+        <tr>
+          <th>所属信息分类</th>
+          <th>表头名</th>
+          <th>字段名</th>
+          <th>字段类型</th>
+          <th>输出类型</th>
+          <th>验证规则</th>
+          <th style="width:120px;">创建时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @info_types.each do |info_type| %>
+          <tr>
+            <td><%= InfoClass.find_by(id: info_type.info_class_id).name %></td>
+            <td><%= info_type.name %></td>
+            <td><%= info_type.fieldname %></td>
+            <td><%= info_type.fieldtype %></td>
+            <td><%= info_type.optype %></td>
+            <td><%= info_type.validation_rule %></td>
+            <td><%= info_type.created_at.strftime("%F %T")%></td>
+            <td>
+              <%= link_to "查看", info_type, class: "btn btn-default btn-xs" %>
+              <%= link_to "修改", edit_info_type_path(info_type), class: "btn btn-default btn-xs" %>
+              <%= link_to "删除", info_type_path(info_type), method: :delete, class: "btn btn-default btn-xs" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <footer class="panel-footer">
+    <%#= paginate @info_types, views_prefix: 'admin',theme: 'angulr' %>
+    <%= render partial: "shared/admin/paginate", locals: { object: @info_types } %>
+  </footer>
+</div>

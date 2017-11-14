@@ -12,12 +12,26 @@
       <thead>
         <tr>
           <th>邮箱</th>
+          <th>权限</th>
           <th style="width:120px;">创建时间</th>
           <th>操作</th>
         </tr>
       </thead>
       <tbody>
-        <%= render(@users) %>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+            <td><%= user.created_at.strftime("%F %T")%></td>
+            <td>
+              <%= link_to "查看", user, class: "btn btn-default btn-xs" %>
+              <%= link_to "修改", edit_user_path(user), class: "btn btn-default btn-xs" %>
+              <% if can? :delete, User %>
+              <%= link_to "删除", user_path(user), method: :delete, class: "btn btn-default btn-xs" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>

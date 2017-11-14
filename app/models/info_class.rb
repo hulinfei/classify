@@ -5,5 +5,5 @@ class InfoClass
   field :name, type: String
 
   has_many :info_types
-  belongs_to :category
+  has_many :categories
 end

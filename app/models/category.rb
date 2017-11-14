@@ -7,7 +7,6 @@ class Category
   # 分类图标
   mount_uploader :icon, AvatarUploader
 
-  has_many :articles
-  has_many :info_classes
+  belongs_to :info_class
   has_many :infos
 end
