@@ -8,4 +8,6 @@ class Category
   mount_uploader :icon, AvatarUploader
 
   has_many :articles
+  has_many :info_classes
+  has_many :infos
 end
