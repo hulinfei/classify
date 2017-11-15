@@ -3,6 +3,8 @@ class InfosController < BaseController
 
   def index
     @infos = Info.all
+    @categories = Category.all
+    @infos = @infos.where(category_id: params[:title]) unless params[:category_id].blank? 
     if params[:category_id]
       @infos = @infos.where(category_id: params[:category_id])
       @info_types = Category.find(params[:category_id]).info_class.info_types
