@@ -14,7 +14,6 @@ class Info
   field :status, type: Integer, default: 0
 
   has_many :info_types
-  belongs_to :info_class
   belongs_to :wx_user
   belongs_to :category
 end

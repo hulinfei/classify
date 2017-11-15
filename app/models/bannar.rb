@@ -19,6 +19,6 @@ class Bannar
 
   mount_uploader :avatar, AvatarUploader
 
-  belongs_to :site
+  belongs_to :site, counter_cache: true # 统计所属site的 bannars
   orderable
 end
