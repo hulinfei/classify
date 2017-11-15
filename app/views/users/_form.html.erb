@@ -1,9 +1,15 @@
 <%= simple_form_for(@user, html: { multipart: true, class: "form-horizontal" }) do |f| %>
  <%= f.input :email, label: "用户邮箱", placeholder: 'xxx@xx.com' %>
+  <% if current_user != @user  %>
   <div class="line line-dashed b-b line-lg pull-in"></div>
    <div class="col-sm-offset-2">
-  <%= f.collection_select(:role, User::ROLES, :to_s, lambda{|i| i.to_s.humanize}) %>
+    <% if current_user.role != "super" %>
+      <%= f.collection_select(:role, User::ROLES[1,2], :to_s, lambda{|i| i.to_s.humanize}) %>
+    <% else %>
+      <%= f.collection_select(:role, User::ROLES, :to_s, lambda{|i| i.to_s.humanize}) %>
+   <% end %>
    </div>
+   <% end %>
   <div class="line line-dashed b-b line-lg pull-in"></div>
   <%= f.input :password, label: "用户密码"%>
   <div class="line line-dashed b-b line-lg pull-in"></div>

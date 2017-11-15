@@ -21,7 +21,11 @@ class UsersController < BaseController
 
   def create
     @user = @current_site.users.new(user_params)
-
+    if current_user.role != "super" && @user.role == "super"
+      @user = @user.delete(:role)
+      redirect_to users_path, notice: '用户没有权限'
+      return
+    end
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -35,7 +39,9 @@ class UsersController < BaseController
 
   def update
     respond_to do |format|
-      if @user.update(user_params)
+      user_p = user_params.to_h
+      user_p = user_p.delete(:role) if current_user == @user
+      if @user.update(user_p)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else

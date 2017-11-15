@@ -119,6 +119,9 @@
           <li>
             <%= link_to "退出登录", destroy_user_session_path, method: :delete %>
           </li>
+          <li>
+            <%= link_to "修改账户", edit_user_path(current_user), method: :get %>
+          </li>
         </ul>
         <!-- / dropdown -->
       </li>

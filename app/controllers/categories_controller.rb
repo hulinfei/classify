@@ -9,10 +9,14 @@ class CategoriesController < BaseController
   end
 
   def new
+    @categories = Category.all
+    @info_classes = InfoClass.all
     @category = Category.new#current_category.categories.build
   end
 
   def edit
+    @categories = Category.all
+    @info_classes = InfoClass.all
   end
 
   def create
@@ -55,6 +59,6 @@ class CategoriesController < BaseController
     end
 
     def category_params
-      params.require(:category).permit(:name, :icon, :parent_id ,:parent_ids)
+      params.require(:category).permit(:name, :icon, :parent_id ,:parent_ids, :info_class_id)
     end
 end

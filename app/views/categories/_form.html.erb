@@ -1,7 +1,12 @@
 <%= simple_form_for(@category, html: { multipart: true, class: "form-horizontal" }) do |f| %>
     <label class="col-sm-2 control-label file optional">父分类</label>
     <div class="col-sm-offset-2">
-    <%= f.select :parent_id, Category.all.map { |c| [c.name, c.id] }, include_blank: true %>
+    <%= f.select :parent_id, @categories.map { |category| [category.name, category.id] }, include_blank: true %>
+    </div>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+    <label class="col-sm-2 control-label file optional">所属信息分类</label>
+    <div class="col-sm-offset-2">
+    <%= f.select :info_class_id, @info_classes.map { |info_class| [info_class.name, info_class.id] } %>
     </div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
       <%= f.input :name, label: "分类名" %>
