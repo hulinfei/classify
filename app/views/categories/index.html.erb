@@ -2,7 +2,7 @@
   <div class="panel-heading">
       分类列表
     <div class="pull-right">
-      <%= link_to "新建分类", new_category_path, class: "btn btn-primary btn-xs" %>
+      <%= link_to "新建主分类", new_category_path, class: "btn btn-primary btn-xs" %>
     </div>
   </div>
   <div class="table-responsive">
@@ -15,6 +15,7 @@
         <%= link_to '查看', infos_path(category_id: category),class: "btn btn-default btn-xs" %>
         <%= link_to '修改', edit_category_path(category), class: "btn btn-default btn-xs" %>
         <%= link_to '删除', category_path(category), method: :delete, class: "btn btn-default btn-xs"  %>
+         <%= link_to '新建子分类', "/categories/new?category_id=#{category.id}", method: :get, class: "btn btn-default btn-xs"  %>
             <% if not category.children.blank? %>
             <% treelist(category.children) %>
             <% end %>

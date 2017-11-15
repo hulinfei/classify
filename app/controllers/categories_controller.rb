@@ -21,7 +21,6 @@ class CategoriesController < BaseController
 
   def create
     @category = Category.new(category_params)
-
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
