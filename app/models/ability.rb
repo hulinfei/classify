@@ -17,6 +17,7 @@ class Ability
          can :manage, WxUser
          can :manage, InfoType
          can :manage, InfoClass
+         can :manage, Count
        elsif user.role == 'user'
          can :manage, Info
          can :manage, Bannar

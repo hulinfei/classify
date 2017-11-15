@@ -4,7 +4,7 @@ class InfosController < BaseController
   def index
     @infos = Info.all
     @categories = Category.all
-    @infos = @infos.where(category_id: params[:title]) unless params[:category_id].blank? 
+    @infos = @infos.where(category_id: params[:id]) unless params[:category_id].blank? 
     if params[:category_id]
       @infos = @infos.where(category_id: params[:category_id])
       @info_types = Category.find(params[:category_id]).info_class.info_types
@@ -17,7 +17,7 @@ class InfosController < BaseController
 
   def new
     @info_types = Category.find(params[:category_id]).info_class.info_types
-    @info = Info.new#current_info.infos.build
+    @info = Category.find(params[:category_id]).infos.new
   end
 
   def edit
@@ -31,7 +31,7 @@ class InfosController < BaseController
     #  end
     ActionController::Parameters.permit_all_parameters = true
 
-    @info = Info.new(params.require(:info).permit!)
+    @info = Category.find(params[:category_id]).infos.new(params.require(:info).permit!)
 
     respond_to do |format|
       if @info.save

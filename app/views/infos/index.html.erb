@@ -3,16 +3,18 @@
   <form action="/infos" method="get">
     <% @categories.each do |category| %>
         <label class="radio-inlin">
-        <input type="radio" id="name" name="category_id" value= "<%= params[:id] %>" /> <%= category.name %>
+        <input type="radio" id="name" name="category_id" value= "<%= category.id %>" /> <%= category.name %>
     </label>
     <% end %>
   <input type="submit"  value="搜索" class="btn btn-primary">
 </form>
   <div class="panel-heading">
       信息列表
-    <div class="pull-right">
+       <% if  %>
+         <div class="pull-right">
       <%= link_to "新建", new_info_path(category_id: params[:category_id]), class: "btn btn-primary btn-xs" %>
     </div>
+       <% end %>
   </div>
   <div class="table-responsive">
     <table class="table table-striped b-t b-light">
@@ -31,7 +33,6 @@
           <th>状态</th>
           <th>创建时间</th>
           <th>操作</th>
-          
         </tr>
       </thead>
       <tbody>
