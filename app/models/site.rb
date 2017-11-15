@@ -20,7 +20,8 @@ class Site
   mount_uploader :qr, AvatarUploader
   # 站点LOGO
   mount_uploader :logo, AvatarUploader
-
+  # 统计site的wx_users个数
+  field :wx_users_count, type: Integer, default: 0
 
   has_many :bannars
   has_many :wx_users

@@ -15,6 +15,7 @@
           <th>字段类型</th>
           <th>输出类型</th>
           <th>验证规则</th>
+          <th>是否显示到表格</th>
           <th style="width:120px;">创建时间</th>
           <th>操作</th>
         </tr>
@@ -28,6 +29,11 @@
             <td><%= info_type.fieldtype %></td>
             <td><%= info_type.optype %></td>
             <td><%= info_type.validation_rule %></td>
+            <% if info_type.show == true%>
+               <td>已显示</td>
+            <% elsif info_type.show == false%>
+               <td>未显示</td>
+            <% end %>
             <td><%= info_type.created_at.strftime("%F %T")%></td>
             <td>
               <%= link_to "查看", info_type, class: "btn btn-default btn-xs" %>

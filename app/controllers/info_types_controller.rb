@@ -55,6 +55,6 @@ class InfoTypesController < BaseController
     end
 
     def info_type_params
-      params.require(:info_type).permit(:name, :fieldname, :fieldtype, :optype, :validation_rule, :info_class_id)
+      params.require(:info_type).permit(:name, :fieldname, :fieldtype, :optype, :validation_rule, :show, :info_class_id)
     end
 end

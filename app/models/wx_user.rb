@@ -28,8 +28,8 @@ class WxUser
   # 用户所在的分组ID
   field :groupid, type: Integer
   # 用户被打上的标签ID列表
-  field :tagid_list, type: Array
+  field :tagid_list, type: String
 
   has_many :infos
-  belongs_to :site
+  belongs_to :site, counter_cache: true # 统计所属site的 wx_users
 end

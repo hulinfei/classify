@@ -11,6 +11,8 @@ class InfoType
   field :optype, type: String
   # 验证规则
   field :validation_rule, type: String
+  # 是否显示为表头
+  field :show, type: Mongoid::Boolean
 
   belongs_to :info_class
   belongs_to :info
