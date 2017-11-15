@@ -3,16 +3,20 @@
   <form action="/infos" method="get">
     <% @categories.each do |category| %>
         <label class="radio-inlin">
-        <input type="radio" id="name" name="category_id" value= "<%= category.id %>" /> <%= category.name %>
+        <input type="radio" id="name" name="category_id" value= "<%= category.id %>" <%= category.id.to_s == params[:category_id] ? 'checked' : '' %> /> <%= category.name %>
     </label>
     <% end %>
   <input type="submit"  value="搜索" class="btn btn-primary">
 </form>
   <div class="panel-heading">
       信息列表
-       <% if  %>
+       <% if not params[:category_id] == nil%>
          <div class="pull-right">
-      <%= link_to "新建", new_info_path(category_id: params[:category_id]), class: "btn btn-primary btn-xs" %>
+      <%= link_to "新建信息", new_info_path(category_id: params[:category_id]), class: "btn btn-primary btn-xs" %>
+    </div>
+    <% elsif %>
+    <div class="pull-right">
+      <strong style="color:red">选择分类后才能新建</strong>
     </div>
        <% end %>
   </div>
@@ -26,7 +30,9 @@
           <th>电话</th>
           <% if @info_types  %>
           <% @info_types.each do |info_type| %>
+          <% if info_type.show == true  %>
             <th><%= info_type.name %></th>
+            <% end %>
           <% end %>
           <% end %>
           <th>阅读次数</th>
@@ -47,7 +53,9 @@
         <td><%= info.phone %></td>
         <% if @info_types  %>
         <% @info_types.each do |info_type| %>
+        <% if info_type.show == true  %>
         <td><%= info[info_type.fieldname.to_sym] %></td>
+        <% end %>
         <% end %>
         <% end %>
         <td><%= info.view %></td>
