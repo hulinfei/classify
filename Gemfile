@@ -52,7 +52,7 @@ gem 'rack-cors', :require => 'rack/cors'
 
 # mongodb
 gem 'mongoid'
-gem 'mongoid-tree', :require => 'mongoid/tree'
+gem 'mongoid-tree', git: "https://github.com/hulinfei/mongoid-tree.git"
 # 分页
 gem 'kaminari'
 gem 'kaminari-mongoid'
