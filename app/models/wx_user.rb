@@ -29,7 +29,22 @@ class WxUser
   field :groupid, type: Integer
   # 用户被打上的标签ID列表
   field :tagid_list, type: String
+  # 用户积分
+  field :credit, type: Integer, default: 0
+
+  # 用户签到，当用户积分日志为空，或最后一条日期小于当前日期，才可签到。
+  def sign
+    wx_user_logs = CreditLog.where(log: "用户签到增加1点积分", wx_user_id: id)
+    if wx_user_logs.count == 0 || wx_user_logs.last.created_at.strftime("%F") < Time.new.strftime("%F")
+      self.inc(credit: 1)
+      CreditLog.create(log: "用户签到增加1点积分",wx_user_id: id)
+      "用户签到增加1点积分"
+    else
+      "对不起，您今天已经签到了！"
+    end
+  end
 
   has_many :infos
+  has_many :credit_logs
   belongs_to :site, counter_cache: true # 统计所属site的 wx_users
 end

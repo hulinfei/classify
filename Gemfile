@@ -38,12 +38,16 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
 end
-
+# 自动化测试
 group :test do
+  # rails测试
   gem 'rspec-rails'
   gem 'factory_bot'
+  # 清空数据库
   gem 'database_cleaner'
+  # 自动跑测试
   gem 'guard-rspec', require: false
+  # 自动bundle
   gem 'guard-bundler', require: false
 end
 
@@ -75,6 +79,7 @@ gem 'carrierwave-upyun'
 gem 'simple_form'
 # 权限管理
 gem 'cancancan', '~> 2.0'
+# 全局配置
 gem 'config'
 # 后台任务,定时任务
 gem 'sidekiq'

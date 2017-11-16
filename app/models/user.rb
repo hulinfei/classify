@@ -1,8 +1,10 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  # User角色
   ROLES = %i[super admin user]
-  paginates_per 2
+
+  paginates_per 5
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :trackable, :validatable, :registerable
@@ -26,8 +28,6 @@ class User
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
 
-  field :credit, type: Integer, default: 0
-  field :name, type: String, default: ''
   ## Confirmable
   # field :confirmation_token,   type: String
   # field :confirmed_at,         type: Time
@@ -39,13 +39,11 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
+  # 是否为超级管理员
   def super?
     role == 'super'
   end
 
-  def sign
-    self.inc(credit: 1)
-  end
 
 
   belongs_to :site
