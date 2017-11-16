@@ -1,13 +1,8 @@
 <div class="panel panel-default">
   <strong>请选择分类：</strong>
-  <form action="/infos" method="get">
     <% @categories.each do |category| %>
-        <label class="radio-inlin">
-        <input type="radio" id="name" name="category_id" value= "<%= category.id %>" <%= category.id.to_s == params[:category_id] ? 'checked' : '' %> /> <%= category.name %>
-    </label>
+    <a href="<%= infos_url(category_id: category.id) %>" style="color:blue"><%= category.name %> &nbsp</a>
     <% end %>
-  <input type="submit"  value="搜索" class="btn btn-primary">
-</form>
   <div class="panel-heading">
       信息列表
        <% if not params[:category_id] == nil%>
@@ -60,10 +55,15 @@
         <% end %>
         <td><%= info.view %></td>
         <td><%= info.status %></td>
-        <td><%= info.created_at.strftime("%F %T") %></td>
+        <td><%= info.created_at.strftime("%F") %></td>
         <td><%= link_to '查看', info, class: "btn btn-default btn-xs" %>
         <%= link_to '修改', edit_info_path(info), class: "btn btn-default btn-xs" %>
         <%= link_to '删除', info_path(info), method: :delete, class: "btn btn-default btn-xs"  %>
+        <% if info.top == true %>
+      <%= link_to "取消置顶", off_top_info_path(info, category_id: params[:category_id]), method: :put, class: "btn btn-warning btn-xs" %>
+    <% else %>
+      <%= link_to "置顶", top_info_path(info, category_id: params[:category_id]), method: :put, class: "btn btn-default btn-xs" %>
+    <% end -%>
         </td>
       </tr>
       <% end %>

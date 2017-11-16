@@ -26,7 +26,12 @@ Rails.application.routes.draw do
   resources :articles
   resources :info_classes
   resources :info_types
-  resources :infos
+  resources :infos do
+    member do
+        put 'top'
+        put 'off_top'
+      end
+  end
   resources :counts
 	root to: "bannars#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

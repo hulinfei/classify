@@ -10,6 +10,7 @@ class InfosController < BaseController
       @info_types = Category.find(params[:category_id]).info_class.info_types
     end
     @infos = @infos.page params[:page]
+    @infos = @infos.order_by(created_at: :desc, top: :desc)
   end
 
   def show
@@ -26,6 +27,16 @@ class InfosController < BaseController
     @info_types = @info.info_types
   end
 
+  def top
+    @info.update(top: true)
+    redirect_to infos_path(category_id: params[:category_id])
+  end
+
+  def off_top
+   @info.update(top: false)
+    redirect_to infos_path(category_id: params[:category_id])
+  end
+
   def create
     # info_p = info_params
     # @info_types = Category.find(params[:category_id]).info_class.info_types
@@ -40,7 +51,7 @@ class InfosController < BaseController
       if @info.save
         @info.info_types << Category.find(params[:category_id]).info_class.info_types
         @info.update(wx_user_id: WxUser.first.id)
-        format.html { redirect_to infos_path, notice: 'Info was successfully created.' }
+        format.html { redirect_to infos_path(category_id: params[:category_id]), notice: 'Info was successfully created.' }
         format.json { render :show, status: :created, location: @info }
       else
         format.html { render :new }
@@ -52,7 +63,7 @@ class InfosController < BaseController
   def update
     respond_to do |format|
       if @info.update(info_params)
-        format.html { redirect_to infos_path, notice: 'Info was successfully updated.' }
+        format.html { redirect_to infos_path(category_id: params[:category_id]), notice: 'Info was successfully updated.' }
         format.json { render :show, status: :ok, location: @info }
       else
         format.html { render :edit }
