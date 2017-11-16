@@ -10,7 +10,7 @@ class InfosController < BaseController
       @info_types = Category.find(params[:category_id]).info_class.info_types
     end
     @infos = @infos.page params[:page]
-    @infos = @infos.order_by(created_at: :desc, top: :desc)
+    @infos = @infos.order_by(top: :desc, created_at: :desc )
   end
 
   def show

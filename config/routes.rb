@@ -38,11 +38,10 @@ Rails.application.routes.draw do
   namespace :api, format: 'json' do
     namespace :v1 do
       resources :bannars, only: [:index]
-      resources :sites
-      resources :bottom_menus
+      resources :sites, only: [:index]
+      resources :bottom_menus, only: [:index]
       resources :categories, only: [:index]
       resources :wx_users, only: [:index]
-      resources :articles, only: [:index]
       resources :infos
     end
   end
