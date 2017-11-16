@@ -9,6 +9,7 @@ json.infos @infos do |info|
 		json.set! f.fieldname.to_sym, info[f.fieldname.to_sym]
 	end
 end
+json.next_page @page
 
 json.info_types	@info_types do |info_type|
 	json.name info_type.name
