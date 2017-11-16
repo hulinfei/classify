@@ -5,5 +5,13 @@ json.infos @infos do |info|
 	json.phone info.phone
 	json.view info.view
 	json.status info.status
-	json.info_types	Hash[@info_types.map{|info_type|[info_type.fieldname, info[info_type.fieldname]]}]
+	@info_types.each do |f|
+		json.set! f.fieldname.to_sym, info[f.fieldname.to_sym]
+	end
+end
+
+json.info_types	@info_types do |info_type|
+	json.name info_type.name
+	json.fieldname info_type.fieldname
+	json.validation_rule info_type.validation_rule
 end
