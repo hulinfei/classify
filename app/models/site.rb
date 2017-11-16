@@ -30,6 +30,7 @@ class Site
   has_many :bottom_menus
   has_many :diymenus
   has_many :users
+  has_many :categories
 
   def client
     @client ||= WeixinAuthorize::Client.new(weixin_appid, weixin_appsecret, redis_key: id.to_s)

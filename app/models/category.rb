@@ -9,4 +9,5 @@ class Category
 
   belongs_to :info_class
   has_many :infos
+  belongs_to :site
 end
