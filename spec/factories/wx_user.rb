@@ -1,8 +1,7 @@
 # This will guess the User class
 FactoryBot.define do
-  factory :user do
-    email "John@lindo.io"
-    password "123123"
+  factory :wx_user do
+    nickname "John"
     credit  0
   end
 end
