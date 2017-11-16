@@ -39,6 +39,14 @@ group :development, :test do
   gem 'selenium-webdriver'
 end
 
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_bot'
+  gem 'database_cleaner'
+  gem 'guard-rspec', require: false
+  gem 'guard-bundler', require: false
+end
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
@@ -67,6 +75,7 @@ gem 'carrierwave-upyun'
 gem 'simple_form'
 # 权限管理
 gem 'cancancan', '~> 2.0'
+gem 'config'
 # 后台任务,定时任务
 gem 'sidekiq'
 gem 'redis'

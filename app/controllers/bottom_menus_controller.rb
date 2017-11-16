@@ -5,7 +5,7 @@ class BottomMenusController < BaseController
   # GET /bottom_menus.json
   def index
     @bottom_menus = @current_site.bottom_menus.all.page params[:page]
-    @bottom_menus = @bottom_menus.order_by(position: "asc")
+    @bottom_menus = @bottom_menus.order_by(created_at: :desc, position: :asc)
   end
 
   # GET /bottom_menus/1

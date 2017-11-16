@@ -26,6 +26,8 @@ class User
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
 
+  field :credit, type: Integer, default: 0
+  field :name, type: String, default: ''
   ## Confirmable
   # field :confirmation_token,   type: String
   # field :confirmed_at,         type: Time
@@ -39,6 +41,10 @@ class User
 
   def super?
     role == 'super'
+  end
+
+  def sign
+    self.inc(credit: 1)
   end
 
 

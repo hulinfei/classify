@@ -2,6 +2,7 @@ class Info
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Attributes::Dynamic
+  include Mongoid::Orderable
   # 标题
   field :title, type: String
   # 联系方式
@@ -16,4 +17,5 @@ class Info
   has_many :info_types
   belongs_to :wx_user
   belongs_to :category
+  orderable
 end

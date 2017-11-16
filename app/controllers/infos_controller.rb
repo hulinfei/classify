@@ -14,13 +14,12 @@ class InfosController < BaseController
 
   def show
      @info_types = @info.info_types
-     puts "+++++++++++++++++++++++++++++++++++++++++++++++="
-     puts @info_types
   end
 
   def new
     @info_types = Category.find(params[:category_id]).info_class.info_types
     @info = Category.find(params[:category_id]).infos.new
+
   end
 
   def edit
@@ -40,8 +39,6 @@ class InfosController < BaseController
     respond_to do |format|
       if @info.save
         @info.info_types << Category.find(params[:category_id]).info_class.info_types
-        puts "====================="
-        puts @info.info_types
         @info.update(wx_user_id: WxUser.first.id)
         format.html { redirect_to infos_path, notice: 'Info was successfully created.' }
         format.json { render :show, status: :created, location: @info }
