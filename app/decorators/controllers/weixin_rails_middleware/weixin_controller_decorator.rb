@@ -80,16 +80,20 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     def handle_subscribe_event
       openid = @weixin_message.FromUserName
       @current_site = @weixin_public_account
-       WxUserSubscribeWorker.perform_async(@current_site.id.to_s, openid)
+      WxUserSubscribeWorker.perform_async(@current_site.id.to_s, openid)
       if @keyword.present?
         # 扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送
         return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
       end
       reply_text_message("感谢关注#{@current_site.name}")
+      Rails.logger.info("关注")
     end
 
     # 取消关注
     def handle_unsubscribe_event
+      openid = @weixin_message.FromUserName
+      @current_site = @weixin_public_account
+       WxUserUnsubscribeWorker.perform_async(@current_site.id.to_s, openid)
       Rails.logger.info("取消关注")
     end
 

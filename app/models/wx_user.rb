@@ -21,6 +21,8 @@ class WxUser
   field :headimgurl, type: String
   # 用户关注时间，为时间戳
   field :subscribe_time, type: Integer
+  # 用户取消关注时间，为时间戳
+  field :unsubscribe_time, type: Integer
   # 只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。
   field :unionid, type: String
   # 公众号运营者对粉丝的备注

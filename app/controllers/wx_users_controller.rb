@@ -59,6 +59,6 @@ class WxUsersController < BaseController
     end
 
     def wx_user_params
-      params.require(:wx_user).permit(:subscribe, :openid, :nickname, :sex, :language, :city, :province, :country, :headimgurl, :subscribe_time, :unionid, :remark, :groupid, :tagid_list)
+      params.require(:wx_user).permit(:subscribe, :openid, :nickname, :sex, :language, :city, :province, :country, :headimgurl, :subscribe_time, :unsubscribe_time, :unionid, :remark, :groupid, :tagid_list)
     end
 end

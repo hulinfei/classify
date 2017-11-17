@@ -11,6 +11,7 @@
         <tr>
           <th>昵称</th>
           <th>openID</th>
+          <th>是否关注</th>
           <th style="width:120px;">创建时间</th>
           <th>操作</th>
         </tr>
@@ -20,6 +21,11 @@
       <tr>
         <td><%= wx_user.nickname %></td>
         <td><%= wx_user.openid %></td>
+         <%  if wx_user.subscribe == 1%>
+        <td>已关注</td>
+        <% elsif%>
+         <td>未关注</td>
+        <% end %>
         <td><%= wx_user.created_at.strftime("%F %T") %></td>
         <td><%= link_to '查看', wx_user, class: "btn btn-default btn-xs" %>
         <%= link_to '修改', edit_wx_user_path(wx_user), class: "btn btn-default btn-xs" %>
