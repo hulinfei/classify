@@ -78,12 +78,14 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
     # 关注公众账号
     def handle_subscribe_event
+      openid = @weixin_message.FromUserName
       @current_site = @weixin_public_account
+       WxUserSubscribeWorker.perform_async(@current_site.id.to_s, openid)
       if @keyword.present?
         # 扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送
         return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
       end
-      reply_text_message("关注公众账号")
+      reply_text_message("感谢关注#{@current_site.name}")
     end
 
     # 取消关注

@@ -20,7 +20,7 @@ class WxUserSubscribeWorker
 				headimgurl: wx_user_hash[:headimgurl],
 				subscribe_time: wx_user_hash[:subscribe_time],
 				remark: wx_user_hash[:remark],
-				groupid: wx_user_hash[:groupid],
+				groupid: wx_user_hash[:groupid])
 		end
 	end
 
