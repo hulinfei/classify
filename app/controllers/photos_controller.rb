@@ -24,17 +24,23 @@ class PhotosController <  BaseController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new(photo_params)
-    @photo.save
-    # respond_to do |format|
-    #   if @photo.save
-    #     format.html { redirect_to photos_path, notice: 'Photo was successfully created.' }
-    #     format.json { render :show, status: :created, location: @photo }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @photo.errors, status: :unprocessable_entity }
+    params[:photo][:img].each do |photo|
+
+      @params = {}
+      @params['img'] = photo
+      @params['random_number'] = params[:photo][:random_number]
+      @photo = Photo.new(@params)
+      @photo.save
+    #   if !@photo.save
+    #     respond_to do |format|
+    #       format.html { redirect_to new_photo_path, error: 'An error occured uploading.' }
+    #     end
     #   end
     # end
+
+    # respond_to do |format|
+    #   format.html { redirect_to photos_path, notice: 'Photos were successfully uploaded.' }
+    end
   end
 
   # PATCH/PUT /photos/1
