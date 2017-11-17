@@ -78,6 +78,12 @@
                 </a>
               </li>
               <% end %>
+              <li class="<%= "active" if controller_name == "photos" %>">
+                <a href="/photos" class="auto">
+                  <i class="glyphicon glyphicon-picture"></i>
+                  <span>图片管理</span>
+                </a>
+              </li>
               <% if can? :manage, InfoClass %>
               <li class="<%= "active" if controller_name == "info_classes" %>">
                 <a href="/info_classes" class="auto">

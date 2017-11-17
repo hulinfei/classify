@@ -6,8 +6,10 @@ class Info
   field :title, type: String
   # 联系方式
   field :phone, type: String
-  # 描述详情
+  # 描述
   field :description, type: String
+  # 详情
+  field :details, type: String
   # 浏览量
   field :view, type: Integer
   # 状态 0 待审核 1 已审核

@@ -1,27 +1,45 @@
 <%= simple_form_for(@info,  url: infos_path(category_id: params[:category_id]), html: { multipart: true, class: "form-horizontal" }) do |f| %>
             <%= f.input :title, label: "标题" %>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
             <%= f.input :phone, label: "电话" %>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
             <%= f.input :description, label: "描述" %>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+    <div class="form-group text required page_content">
+      <label class="text  col-sm-2 control-label" for="page_content">
+        详情
+      </label>
+      <div class="col-sm-10">
+        <script type="text/plain" id="contentEditor" name="info[details]" id="info_details" style="width:580px;height:300px;"><%= raw(@info.details) %></script>
+      </div>
+    </div>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
     <% @info_types.each do |info_type|%>
        <div class="form-group email optional user_email">
         <label class="col-sm-2 control-label email optional"><%= info_type.name %></label>
         <div class="col-sm-10">
           <input class="form-control string email optional"   value="<%= @info[ info_type.fieldname] %>" name="info[<%= info_type.fieldname %>]" >
         </div>
-      </div>
+        </div>
 
         <div class="line line-dashed b-b line-lg pull-in"></div>
     <% end %>
 
-  <div class="col-sm-10 col-sm-offset-2">
-    <%= f.button :submit, "提 交", class: "btn btn-primary" %>
-    <%= link_to "返 回", :back, class: "btn btn-default" %>
-  </div>
+    <div class="col-sm-10 col-sm-offset-2">
+        <%= f.button :submit, "提 交", class: "btn btn-primary" %>
+        <%= link_to "返 回", :back, class: "btn btn-default" %>
+    </div>
 <% end %>
 
-    <div class="line line-dashed b-b line-lg pull-in"></div>
-    <div id="fileUploadContent" class="fileUploadContent"></div>
-    <button onclick="testUpload()">提交</button>
+<div class="line line-dashed b-b line-lg pull-in"></div>
+<%= simple_form_for(@photo, html: { multipart: true, class: "form-horizontal" }) do |f| %>
+  <%= f.input :img, label: "图片" %>
+  <input type="hidden" value="<%= $rand %>" name="photo[random_number]" id="photo_random_number">
+  <div class="line line-dashed b-b line-lg pull-in"></div>
+  <div class="col-sm-10 col-sm-offset-2">
+   <input type="submit" name="commit" value="提 交" class="btn btn-default btn btn-primary" >
+  </div>
+<% end %>
 
 <%= content_for :style do %>
   <link href="/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
@@ -34,33 +52,4 @@
   <script type="text/javascript">
     var um1 = UM.getEditor('contentEditor');
   </script>
-  <% end %>
-
-<% content_for :script do %>
-<!-- 图片上传 -->
-<script type="text/javascript">
-    $("#fileUploadContent").initUpload({
-        "uploadUrl":"#",//上传文件信息地址
-        //"size":350,//文件大小限制，单位kb,默认不限制
-        //"maxFileNumber":3,//文件个数限制，为整数
-        //"filelSavePath":"",//文件上传地址，后台设置的根目录
-        "beforeUpload":beforeUploadFun,//在上传前执行的函数
-        //"onUpload":onUploadFun，//在上传后执行的函数
-        //autoCommit:true,//文件是否自动上传
-        "fileType":['png','jpg','docx','doc']//文件类型限制，默认不限制，注意写的是文件后缀
-    });
-    function beforeUploadFun(opt){
-        opt.otherData =[{"name":"name","value":"zxm"}];
-    }
-    function onUploadFun(opt,data){
-        alert(data);
-        uploadTools.uploadError(opt);//显示上传错误
-        uploadTools.uploadSuccess(opt);//显示上传成功
-    }
-
-    function testUpload(){
-      var opt = uploadTools.getOpt("fileUploadContent");
-      uploadEvent.uploadFileEvent(opt);
-    }
-</script>
 <% end %>
