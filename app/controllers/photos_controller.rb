@@ -1,10 +1,10 @@
-class PhotosController < ApplicationController
+class PhotosController <  BaseController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all
+    @photos = Photo.all.page params[:page]
   end
 
   # GET /photos/1
@@ -14,7 +14,7 @@ class PhotosController < ApplicationController
 
   # GET /photos/new
   def new
-    @photo = Photo.new
+    @photo = Photo.new()
   end
 
   # GET /photos/1/edit
@@ -25,16 +25,16 @@ class PhotosController < ApplicationController
   # POST /photos.json
   def create
     @photo = Photo.new(photo_params)
-
-    respond_to do |format|
-      if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
-        format.json { render :show, status: :created, location: @photo }
-      else
-        format.html { render :new }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
-    end
+    @photo.save
+    # respond_to do |format|
+    #   if @photo.save
+    #     format.html { redirect_to photos_path, notice: 'Photo was successfully created.' }
+    #     format.json { render :show, status: :created, location: @photo }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @photo.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /photos/1
@@ -42,7 +42,7 @@ class PhotosController < ApplicationController
   def update
     respond_to do |format|
       if @photo.update(photo_params)
-        format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
+        format.html { redirect_to photos_path, notice: 'Photo was successfully updated.' }
         format.json { render :show, status: :ok, location: @photo }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class PhotosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
-      params.fetch(:photo, {})
+      params.require(:photo).permit(:img, :random_number)
     end
 end

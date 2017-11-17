@@ -21,7 +21,9 @@ class InfosController < BaseController
   def new
     @info_types = Category.find(params[:category_id]).info_class.info_types
     @info = Category.find(params[:category_id]).infos.new
-
+    @photo = Photo.new
+    # 生成一个随机数
+    $rand = ['a'..'z','0'..'9',*'A'..'Z'].sample(16).join
   end
 
   def edit
@@ -52,6 +54,8 @@ class InfosController < BaseController
       if @info.save
         @info.info_types << Category.find(params[:category_id]).info_class.info_types
         @info.update(wx_user_id: WxUser.first.id)
+        # 根据随机数查找 更新info_id
+        Photo.where(random_number: $rand).update_all(info_id: @info.id)
         format.html { redirect_to infos_path(category_id: params[:category_id]), notice: 'Info was successfully created.' }
         format.json { render :show, status: :created, location: @info }
       else
@@ -87,6 +91,6 @@ class InfosController < BaseController
     end
 
     def info_params
-      params.require(:info).permit(:title, :phone, :description , :view, :status, :category_id)
+      params.require(:info).permit(:title, :phone, :description, :details, :view, :status, :category_id)
     end
 end
