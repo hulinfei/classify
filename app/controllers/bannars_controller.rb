@@ -5,7 +5,7 @@ class BannarsController <  BaseController
   # GET /bannars.json
   def index
     @bannars = @current_site.bannars.page params[:page]
-     @bannars = @bannars.order_by(position: "asc")
+     @bannars = @bannars.order_by(active: :desc, position: :asc)
   end
 
   # GET /bannars/1

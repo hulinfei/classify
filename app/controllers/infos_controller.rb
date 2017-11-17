@@ -15,7 +15,7 @@ class InfosController < BaseController
 
   def show
      @info_types = @info.info_types
-     @info = @info.inc()
+     @info = @info.inc(view: 1)
   end
 
   def new
