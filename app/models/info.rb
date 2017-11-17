@@ -16,6 +16,7 @@ class Info
   field :top, type: Mongoid::Boolean, default: false
 
   has_many :info_types
+  has_many :photos
   belongs_to :wx_user
   belongs_to :category
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :photos
   mount WeixinRailsMiddleware::Engine, at: "/"
   devise_for :users, controllers: { sessions: 'users/sessions' }
   resources :diymenus do
