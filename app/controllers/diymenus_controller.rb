@@ -13,7 +13,7 @@ class DiymenusController < BaseController
   end
 
   def sync
-    menu = Diymenu.buid_menu(@current_site)
+    menu = Diymenu.build_menu(@current_site)
     redirect_to diymenus_path
   end
 

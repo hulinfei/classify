@@ -1,6 +1,7 @@
 <%= simple_form_for([@site], html: { multipart: true, class: "form-horizontal" }) do |f| %>
   <%= f.input :name, label: "站点名称" %>
   <%= f.input :domain, label: "站点域名" %>
+  <%= f.input :subscribe_text, label: "关注回复信息" %>
   <% if not @site.logo_url.blank?  %>
 <div class="col-sm-10 col-sm-offset-2 m-b">
   <%= image_tag @site.logo_url('30x30'), class: "img-thumbnail" %>

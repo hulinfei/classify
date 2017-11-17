@@ -3,30 +3,27 @@
   查看广告
 </div>
 <div class="panel-body">
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @bannar.title %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @bannar.url %>
-</p>
-<p>
-  <strong>Active:</strong>
-  <%= @bannar.active %>
-</p>
-
-<% if not @bannar&.avatar&.url.blank? %>
-<img src="<%= @bannar.avatar.url('720x240') %>">
+  <%= simple_form_for(@bannar, html: { multipart: true, class: "form-horizontal" }) do |f| %>
+    <%= f.input :title, label: "订阅公众号", disabled: true %>
+  <div class="line line-dashed b-b line-lg pull-in"></div>
+   <%= f.input :url, label: "openId", disabled: true %>
+  <div class="line line-dashed b-b line-lg pull-in"></div>
+  <%= f.input :active, label: "昵称", disabled: true %>
+  <div class="line line-dashed b-b line-lg pull-in"></div>
+  <%= f.input :end_time, label: "过期时间", disabled: true %>
+  <div class="line line-dashed b-b line-lg pull-in"></div>
+   <% if not @bannar.avatar_url.blank?  %>
+<div class="col-sm-10 col-sm-offset-2 m-b">
+  <%= image_tag @bannar.avatar_url('720x240'), class: "img-thumbnail" %>
+</div>
 <% end %>
-<div class="line line-dashed b-b line-lg pull-in"></div>
-  
-<%= link_to "修改", edit_bannar_path(@bannar), class: "btn btn-success btn-xs" %>
+ <div class="line line-dashed b-b line-lg pull-in"></div>
+  <div class="col-sm-10 col-sm-offset-2">
+   <%= link_to "修改", edit_bannar_path(@bannar), class: "btn btn-success btn-xs" %>
 <%= link_to "返回", bannars_path,  class: "btn btn-success btn-xs" %>
+  </div>
+  <% end %>
 </div>
 </div>
-</div>
+
 

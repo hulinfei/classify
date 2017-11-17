@@ -12,6 +12,8 @@ class Site
   field :weixin_appid, type: String
   #微信appsecret
   field :weixin_appsecret, type: String
+   #关注后消息
+  field :subscribe_text, type: String
   #微信secret_key
   field :weixin_secret_key, type: String
   #微信token
