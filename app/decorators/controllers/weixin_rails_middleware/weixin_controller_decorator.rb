@@ -85,7 +85,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
         # 扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送
         return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
       end
-      reply_text_message("感谢关注#{@current_site.name}")
+      reply_text_message("@current_site.subscribe_text")
       Rails.logger.info("关注")
     end
 
