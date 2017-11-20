@@ -15,6 +15,8 @@
       </div>
     </div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
+      <%= f.input :address, label: "地址" %>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
     <!-- 循环生成动态的字段 -->
     <% @info_types.each do |info_type|%>
        <div class="form-group email optional user_email">

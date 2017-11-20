@@ -99,6 +99,6 @@ class InfosController < BaseController
     end
 
     def info_params
-      params.require(:info).permit(:title, :phone, :description, :details, :view, :status, :category_id)
+      params.require(:info).permit(:title, :phone, :description, :details, :address, :view, :status, :category_id)
     end
 end

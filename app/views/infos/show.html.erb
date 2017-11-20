@@ -20,6 +20,8 @@
         </div>
       </div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
+      <%= f.input :address, label: "地址" %>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
 
     <% @photos.each do |photo| %>
       <%= image_tag photo.img_url, class: "img-thumbnail" %>

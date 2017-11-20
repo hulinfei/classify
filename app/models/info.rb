@@ -10,6 +10,8 @@ class Info
   field :description, type: String
   # 详情
   field :details, type: String
+  # 地址
+  field :address, type: String
   # 浏览量
   field :view, type: Integer
   # 状态 0 待审核 1 已审核
