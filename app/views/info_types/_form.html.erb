@@ -10,12 +10,12 @@
     <div class="line line-dashed b-b line-lg pull-in"></div>
     <label class="col-sm-2 control-label file optional">字段类型</label>
     <div class="col-sm-offset-2">
-    <%= f.select :fieldtype, Settings.info_type.fieldtype.map { |x| x[1]}%>
+    <%= f.select :fieldtype, Settings.info_type.fieldtype.map { |x| x[0]}%>
     </div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
     <label class="col-sm-2 control-label file optional">输出类型</label>
     <div class="col-sm-offset-2">
-    <%= f.select :optype, Settings.info_type.optype %>
+    <%= f.select :optype, Settings.info_type.optype.map { |x| x[0]} %>
     </div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
     <%= f.input :validation_rule, label: "验证规则" %>

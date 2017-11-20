@@ -1,8 +1,10 @@
 info_type:
   fieldtype:
-    - string: 1
-    - integer: 2
-    - boolean: 3
+    string: 1
+    integer: 2
+    boolean: 3
   optype:
-    - input
-    - textarea
+    input: 1
+    textarea: 2
+    checkbox: 3
+    radio: 4
