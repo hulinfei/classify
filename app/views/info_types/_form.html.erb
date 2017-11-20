@@ -8,7 +8,15 @@
     <div class="line line-dashed b-b line-lg pull-in"></div>
     <%= f.input :fieldname, label: "字段名" %>
     <div class="line line-dashed b-b line-lg pull-in"></div>
-    <%= f.input :fieldtype, label: "字段类型" %>
+    <label class="col-sm-2 control-label file optional">字段类型</label>
+    <div class="col-sm-offset-2">
+    <%= f.select :info_class_id, InfoClass.all.map { |c| [c.name, c.id] } %>
+    </div>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+    <label class="col-sm-2 control-label file optional">输出类型</label>
+    <div class="col-sm-offset-2">
+    <%= f.select :info_class_id, InfoClass.all.map { |c| [c.name, c.id] } %>
+    </div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
     <%= f.input :optype, label: "输出类型" %>
     <div class="line line-dashed b-b line-lg pull-in"></div>

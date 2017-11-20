@@ -2,6 +2,7 @@ class Bannar
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Orderable
+  validates :title, presence: true
   paginates_per 5
 
   #标题
