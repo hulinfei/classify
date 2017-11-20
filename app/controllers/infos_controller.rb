@@ -1,4 +1,5 @@
 class InfosController < BaseController
+  after_action :update_photo, only: [:create, :update]
   before_action :set_info, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -16,6 +17,7 @@ class InfosController < BaseController
   def show
      @info_types = @info.info_types
      @info = @info.inc(view: 1)
+     @photos = @info.photos
   end
 
   def new
@@ -28,6 +30,9 @@ class InfosController < BaseController
 
   def edit
     @info_types = @info.info_types
+    @photo = @info.photos.new
+    # 生成一个随机数
+    $rand = ['a'..'z','0'..'9',*'A'..'Z'].sample(16).join
   end
 
   def top
@@ -54,8 +59,7 @@ class InfosController < BaseController
       if @info.save
         @info.info_types << Category.find(params[:category_id]).info_class.info_types
         @info.update(wx_user_id: WxUser.first.id)
-        # 根据随机数查找 更新info_id
-        Photo.where(random_number: $rand).update_all(info_id: @info.id)
+
         format.html { redirect_to infos_path(category_id: params[:category_id]), notice: 'Info was successfully created.' }
         format.json { render :show, status: :created, location: @info }
       else
@@ -88,6 +92,10 @@ class InfosController < BaseController
   private
     def set_info
       @info = Info.find(params[:id])
+    end
+
+    def update_photo
+        Photo.where(random_number: $rand).update_all(info_id: @info.id)
     end
 
     def info_params

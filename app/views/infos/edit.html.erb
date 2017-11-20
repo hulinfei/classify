@@ -3,6 +3,61 @@
   编辑信息
 </div>
 <div class="panel-body">
-<%= render 'form' %>
+<%= simple_form_for(@info, html: { multipart: true, class: "form-horizontal" }) do |f| %>
+            <%= f.input :title, label: "标题" %>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+            <%= f.input :phone, label: "电话" %>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+            <%= f.input :description, label: "描述" %>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+    <!-- 富文本编辑器 -->
+    <div class="form-group text required page_content">
+      <label class="text  col-sm-2 control-label" for="page_content">
+        详情
+      </label>
+      <div class="col-sm-10">
+        <script type="text/plain" id="contentEditor" name="info[details]" id="info_details" style="width:580px;height:300px;"><%= raw(@info.details) %></script>
+      </div>
+    </div>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+    <!-- 循环生成动态的字段 -->
+    <% @info_types.each do |info_type|%>
+       <div class="form-group email optional user_email">
+        <label class="col-sm-2 control-label email optional"><%= info_type.name %></label>
+        <div class="col-sm-10">
+          <input class="form-control string email optional"   value="<%= @info[ info_type.fieldname] %>" name="info[<%= info_type.fieldname %>]" >
+        </div>
+        </div>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+    <% end %>
+    <div class="col-sm-10 col-sm-offset-2">
+        <%= f.button :submit, "提 交", class: "btn btn-primary" %>
+        <%= link_to "返 回", :back, class: "btn btn-default" %>
+    </div>
+<% end %>
+<!-- 图片上传 -->
+<div class="line line-dashed b-b line-lg pull-in"></div>
+<%= simple_form_for(@photo, html: { multipart: true, class: "form-horizontal" }) do |f| %>
+  <%= f.file_field :img, multiple: 'multiple' %>
+  <!-- 加入一个生成的随机数 -->
+  <input type="hidden" value="<%= $rand %>" name="photo[random_number]" id="photo_random_number">
+  <div class="line line-dashed b-b line-lg pull-in"></div>
+  <div class="col-sm-10 col-sm-offset-2">
+   <input type="submit" name="commit" value="提 交" class="btn btn-default btn btn-primary" >
+  </div>
+<% end %>
+<!-- 富文本编辑器 -->
+<%= content_for :style do %>
+  <link href="/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+<% end %>
+
+<% content_for :script do %>
+  <script type="text/javascript" charset="utf-8" src="/umeditor/umeditor.config.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/umeditor/umeditor.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/umeditor/lang/zh-cn/zh-cn.js"></script>
+  <script type="text/javascript">
+    var um1 = UM.getEditor('contentEditor');
+  </script>
+<% end %>
 </div>
 </div>

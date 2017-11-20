@@ -4,12 +4,28 @@
 </div>
 <div class="panel-body">
   <%= simple_form_for(@info, html: { multipart: true, class: "form-horizontal" }) do |f| %>
-    <%= f.input :title, label: "标题", disabled: true %>
-  <div class="line line-dashed b-b line-lg pull-in"></div>
-   <%= f.input :description, label: "描述", disabled: true %>
-  <div class="line line-dashed b-b line-lg pull-in"></div>
-   <%= f.input :phone, label: "电话", disabled: true %>
-  <div class="line line-dashed b-b line-lg pull-in"></div>
+      <%= f.input :title, label: "标题", disabled: true %>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+     <%= f.input :description, label: "描述", disabled: true %>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+     <%= f.input :phone, label: "电话", disabled: true %>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+    <!-- 富文本编辑器 -->
+      <div class="form-group text required page_content">
+        <label class="text  col-sm-2 control-label" for="page_content">
+          详情
+        </label>
+        <div class="col-sm-10">
+          <script type="text/plain" id="contentEditor" name="info[details]" id="info_details" style="width:580px;height:300px;"><%= raw(@info.details) %></script>
+        </div>
+      </div>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+
+    <% @photos.each do |photo| %>
+      <%= image_tag photo.img_url, class: "img-thumbnail" %>
+    <% end %>
+
+    <div class="line line-dashed b-b line-lg pull-in"></div>
     <% @info_types.each do |info_type|%>
        <div class="form-group email optional user_email">
         <label class="col-sm-2 control-label email optional"><%= info_type.name %></label>
@@ -19,12 +35,13 @@
       </div>
         <div class="line line-dashed b-b line-lg pull-in"></div>
     <% end %>
-  <div class="col-sm-10 col-sm-offset-2">
-    <%= link_to "返 回", :back, class: "btn btn-default" %>
-  </div>
+    <div class="col-sm-10 col-sm-offset-2">
+      <%= link_to "返 回", :back, class: "btn btn-default" %>
+    </div>
   <% end %>
 </div>
 </div>
+<!-- 富文本编辑器 -->
 <%= content_for :style do %>
   <link href="/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
 <% end %>
@@ -36,4 +53,4 @@
   <script type="text/javascript">
     var um1 = UM.getEditor('contentEditor');
   </script>
-  <% end %>
+<% end %>
