@@ -1,0 +1,8 @@
+info_type:
+  fieldtype:
+    - string: 1
+    - integer: 2
+    - boolean: 3
+  optype:
+    - input
+    - textarea
