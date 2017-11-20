@@ -47,7 +47,12 @@ Rails.application.routes.draw do
       resources :bottom_menus, only: [:index]
       resources :categories, only: [:index]
       resources :wx_users, only: [:index]
-      resources :infos
+      resources :infos do
+        collection do
+          get 'hot'
+          get 'top'
+        end
+      end
     end
   end
 end

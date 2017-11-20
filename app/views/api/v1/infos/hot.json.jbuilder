@@ -12,17 +12,4 @@ json.infos @infos do |info|
 	json.view info.view
 	json.created_at info.created_at
 	json.status info.status
-	@info_types.each do |f|
-		json.set! f.fieldname.to_sym, info[f.fieldname.to_sym]
-	end
-end
-json.next_page @page
-
-json.info_types	@info_types do |info_type|
-	json.name info_type.name
-	json.fieldname info_type.fieldname
-	json.fieldtype info_type.fieldtype
-	json.optype info_type.optype
-	json.validation_rule info_type.validation_rule
-
 end

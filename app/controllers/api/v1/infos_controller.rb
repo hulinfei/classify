@@ -7,5 +7,13 @@ class Api::V1::InfosController <  Api::V1::BaseController
     @infos = @infos.where(category_id: params[:category_id]) if params[:category_id]
     @infos = @infos.page(params[:page]).per(2)
     @page = @infos.next_page
- end
+  end
+
+  def hot
+    @infos = Info.all.order_by(view: :desc).limit(5)
+  end
+
+  def top
+    @infos = Info.where(top: true).order_by(created_at: :desc)
+  end
 end
