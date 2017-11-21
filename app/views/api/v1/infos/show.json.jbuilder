@@ -1,5 +1,5 @@
 json.status 1
-json.infos do
+json.info do
 	json.id @info.id.to_s
 	json.title @info.title
 	json.description @info.description
