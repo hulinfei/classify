@@ -14,6 +14,12 @@
         <script type="text/plain" id="contentEditor" name="info[details]" id="info_details" style="width:580px;height:300px;"><%= raw(@info.details) %></script>
       </div>
     </div>
+    <%= f.fields_for :photos do |p| %>
+     <div class="field">
+       <%= p.label :img %><br>
+       <%= p.file_field :img, :multiple => true, name: "photos[img][]" %>
+     </div>
+    <% end %>
     <div class="line line-dashed b-b line-lg pull-in"></div>
       <%= f.input :address, label: "地址" %>
     <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -31,17 +37,6 @@
         <%= f.button :submit, "提 交", class: "btn btn-primary" %>
         <%= link_to "返 回", :back, class: "btn btn-default" %>
     </div>
-<% end %>
-<!-- 图片上传 -->
-<div class="line line-dashed b-b line-lg pull-in"></div>
-<%= simple_form_for(@photo, html: { multipart: true, class: "form-horizontal" }) do |f| %>
-  <%= f.file_field :img, multiple: 'multiple' %>
-  <!-- 加入一个生成的随机数 -->
-  <input type="hidden" value="<%= $rand %>" name="photo[random_number]" id="photo_random_number">
-  <div class="line line-dashed b-b line-lg pull-in"></div>
-  <div class="col-sm-10 col-sm-offset-2">
-   <input type="submit" name="commit" value="提 交" class="btn btn-default btn btn-primary" >
-  </div>
 <% end %>
 <!-- 富文本编辑器 -->
 <%= content_for :style do %>

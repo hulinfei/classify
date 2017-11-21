@@ -1,5 +1,4 @@
 class InfosController < BaseController
-  after_action :update_photo, only: [:create, :update]
   before_action :set_info, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -18,22 +17,18 @@ class InfosController < BaseController
     @info_types = @info.info_types
     @info.view = $redis.incr("info:#{@info.id.to_s}:view")
     @info.save
-    @photos = @info.photos
+    @photos = @info.photos.all
   end
 
   def new
     @info_types = Category.find(params[:category_id]).info_class.info_types
     @info = Category.find(params[:category_id]).infos.new
-    @photo = Photo.new
-    # 生成一个随机数
-    $rand = ['a'..'z','0'..'9',*'A'..'Z'].sample(16).join
+    @photo = @info.photos.build
   end
 
   def edit
     @info_types = @info.info_types
-    @photo = @info.photos.new
-    # 生成一个随机数
-    $rand = ['a'..'z','0'..'9',*'A'..'Z'].sample(16).join
+    @photo = @info.photos.build
   end
 
   def top
@@ -47,17 +42,14 @@ class InfosController < BaseController
   end
 
   def create
-    # info_p = info_params
-    # @info_types = Category.find(params[:category_id]).info_class.info_types
-    #  @info_types.each do |info_type|
-    #   info_p.permit(info_type.fieldname.to_sym)
-    #  end
-    # ActionController::Parameters.permit_all_parameters = true
 
     @info = Category.find(params[:category_id]).infos.new(params.require(:info).permit!)
 
     respond_to do |format|
       if @info.save
+        params[:photos]['img'].each do |i|
+          @photo = @info.photos.create!(:img => i)
+        end
         @info.info_types << Category.find(params[:category_id]).info_class.info_types
         @info.update(wx_user_id: WxUser.first.id)
 
@@ -73,10 +65,12 @@ class InfosController < BaseController
   def update
     respond_to do |format|
       if @info.update(params.require(:info).permit!)
+        params[:photos]['img'].each do |i|
+          @photo = @info.photos.create!(:img => i)
+        end
         format.html { redirect_to infos_path(category_id: params[:category_id]), notice: 'Info was successfully updated.' }
       else
         @info_types = @info.info_types
-        @photo = @info.photos.new
         format.html { render :edit }
       end
     end
@@ -94,11 +88,7 @@ class InfosController < BaseController
       @info = Info.find(params[:id])
     end
 
-    def update_photo
-        Photo.where(random_number: $rand).update_all(info_id: @info.id)
-    end
-
     def info_params
-      params.require(:info).permit(:title, :phone, :description, :details, :address, :view, :status, :category_id)
+      params.require(:info).permit(:title, :phone, :description, :details, :address, :view, :status, :category_id, photos_attributes: [:id, :info_id, :img])
     end
 end
