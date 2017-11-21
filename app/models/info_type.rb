@@ -10,7 +10,7 @@ class InfoType
   # 输出类型 例如input...
   field :optype, type: String
   # 验证规则
-  field :validation_rule, type: String
+  field :validation_rule, type: Regexp
   # 是否显示为表头
   field :show, type: Mongoid::Boolean
 

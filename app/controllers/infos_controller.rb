@@ -63,6 +63,8 @@ class InfosController < BaseController
         format.html { redirect_to infos_path(category_id: params[:category_id]), notice: 'Info was successfully created.' }
         format.json { render :show, status: :created, location: @info }
       else
+        @info_types = Category.find(params[:category_id]).info_class.info_types
+        @photo = Photo.new
         format.html { render :new }
         format.json { render json: @info.errors, status: :unprocessable_entity }
       end
@@ -75,6 +77,8 @@ class InfosController < BaseController
         format.html { redirect_to infos_path(category_id: params[:category_id]), notice: 'Info was successfully updated.' }
         format.json { render :show, status: :ok, location: @info }
       else
+        @info_types = @info.info_types
+        @photo = @info.photos.new
         format.html { render :edit }
         format.json { render json: @info.errors, status: :unprocessable_entity }
       end
