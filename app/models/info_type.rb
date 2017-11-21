@@ -15,5 +15,5 @@ class InfoType
   field :show, type: Mongoid::Boolean
 
   belongs_to :info_class
-  belongs_to :info
+  has_and_belongs_to_many :infos
 end

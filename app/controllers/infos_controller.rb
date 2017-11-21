@@ -16,6 +16,8 @@ class InfosController < BaseController
 
   def show
     @info_types = @info.info_types
+    puts "======================="
+    puts @info_types
     @info.view = $redis.incr("info:#{@info.id.to_s}:view")
     @info.save
     @photos = @info.photos
@@ -72,7 +74,7 @@ class InfosController < BaseController
 
   def update
     respond_to do |format|
-      if @info.update(info_params)
+      if @info.update(params.require(:info).permit!)
         format.html { redirect_to infos_path(category_id: params[:category_id]), notice: 'Info was successfully updated.' }
       else
         @info_types = @info.info_types

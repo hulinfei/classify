@@ -2,6 +2,7 @@ class Info
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Attributes::Dynamic
+  validates :phone, presence: true
   # 标题
   field :title, type: String
   # 联系方式
@@ -21,19 +22,24 @@ class Info
 
   before_validation :validate_dynamic_attrs
 
-  has_many :info_types
+  has_and_belongs_to_many :info_types
   has_many :photos
   belongs_to :wx_user
   belongs_to :category
 
   def validate_dynamic_attrs
+    puts '不匹配====='
     info_types = self.category.info_class.info_types
     info_types.each do |info_type|
+
       unless info_type.validation_rule.blank?
-        regexp_str =/#{info_type.validation_rule}/
+        puts '=============================='
+        puts self[info_type.fieldname.to_sym]
+        regexp_str =/^#{info_type.validation_rule}$/
         if (regexp_str  =~ self[info_type.fieldname.to_sym] ).nil?
-          puts '不匹配================================================================'
           self.errors[info_type.fieldname.to_sym] << 'errors!!!!!!!'
+          puts '=============================='
+          puts self.errors.full_messages
           break
         end
       end
