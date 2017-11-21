@@ -16,8 +16,6 @@ class InfosController < BaseController
 
   def show
     @info_types = @info.info_types
-    puts "======================="
-    puts @info_types
     @info.view = $redis.incr("info:#{@info.id.to_s}:view")
     @info.save
     @photos = @info.photos
