@@ -1,7 +1,11 @@
 <div class="panel panel-default">
   <strong>请选择分类：</strong>
     <% @categories.each do |category| %>
+    <% if  %>
     <a href="<%= infos_url(category_id: category.id) %>" style="color:blue"><%= category.name %> &nbsp</a>
+     <% else %>
+    <a href="<%= infos_url(category_id: category.id) %>" style="color:red"><%= category.name %> &nbsp</a>
+    <% end %>
     <% end %>
   <div class="panel-heading">
       信息列表

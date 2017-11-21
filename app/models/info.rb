@@ -32,9 +32,9 @@ class Info
     info_types = self.category.info_class.info_types
     info_types.each do |info_type|
       unless info_type.validation_rule.blank?
-        regexp_str =/^#{info_type.validation_rule}$/
+        regexp_str =/#{info_type.validation_rule}/
         if (regexp_str  =~ self[info_type.fieldname.to_sym] ).nil?
-          self.errors[info_type.fieldname.to_sym] << 'errors!!!!!!!'
+          self.errors[info_type.fieldname.to_sym] << '请输入符合规则的数据'
           puts self.errors.full_messages
           break
         end

@@ -8,3 +8,4 @@ info_type:
     textarea: 2
     checkbox: 3
     radio: 4
+  type: [别墅, 普通住宅, 公寓, 平房, 四合院, 排屋]
