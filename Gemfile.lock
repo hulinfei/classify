@@ -156,6 +156,7 @@ GEM
       activesupport (>= 3.0.0)
     faraday (0.13.1)
       multipart-post (>= 1.2, < 3)
+    fast-stemmer (1.0.2)
     ffi (1.9.18)
     formatador (0.2.5)
     globalid (0.4.1)
@@ -230,6 +231,9 @@ GEM
     mongoid_orderable (5.1.0)
       mongoid (>= 3.0.0)
       mongoid-compatibility
+    mongoid_search (0.3.4)
+      fast-stemmer (~> 1.0.0)
+      mongoid (>= 3.0.0)
     multi_json (1.12.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
@@ -408,6 +412,7 @@ DEPENDENCIES
   mongoid
   mongoid-tree!
   mongoid_orderable
+  mongoid_search
   puma (~> 3.7)
   rack-cors
   rails (~> 5.1.4)

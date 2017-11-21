@@ -16,7 +16,7 @@
           <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
             <span>平台管理</span>
           </li>
-            <% if can?  :manage, Site %>
+          <% if can?  :manage, Site %>
               <li class="<%= "active" if controller_name == "sites" %>">
                 <a href="/sites" class="auto">
                   <i class="glyphicon glyphicon-blackboard"></i>
@@ -31,6 +31,24 @@
                 </a>
               </li>
             <% end %>
+            <% if can? :manage, User %>
+              <li class="<%= "active" if controller_name == "users" %>">
+                <a href="/managers" class="auto">
+                  <i class="glyphicon glyphicon-user"></i>
+                  <span>用户管理</span>
+                </a>
+              </li>
+            <% else %>
+              <li class="<%= "active" if controller_name == "users" %>">
+                <a href="/managers" class="auto">
+                  <i class="glyphicon glyphicon-user"></i>
+                  <span>账号管理</span>
+                </a>
+              </li>
+            <% end %>
+          <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+            <span>基础管理</span>
+          </li>
             <% if can? :manage, Bannar %>
               <li class="<%= "active" if controller_name == "bannars" %>">
                 <a href="/bannars" class="auto">
@@ -39,52 +57,29 @@
                 </a>
               </li>
             <% end %>
-              <% if can? :manage, User %>
-                <li class="<%= "active" if controller_name == "users" %>">
-                  <a href="/managers" class="auto">
-                    <i class="glyphicon glyphicon-user"></i>
-                    <span>用户管理</span>
-                  </a>
-                </li>
-              <% else %>
-                <li class="<%= "active" if controller_name == "users" %>">
-                  <a href="/managers" class="auto">
-                    <i class="glyphicon glyphicon-user"></i>
-                    <span>账号管理</span>
-                  </a>
-                </li>
-              <% end %>
-              <% if can? :manage, Category %>
+            <% if can? :manage, Category %>
               <li class="<%= "active" if controller_name == "categories" %>">
                 <a href="/categories" class="auto">
                   <i class="glyphicon glyphicon-th-list"></i>
                   <span>分类管理</span>
                 </a>
               </li>
-              <% end %>
-              <% if can? :manage, WxUser %>
-              <li class="<%= "active" if controller_name == "wx_users" %>">
-                <a href="/wx_users" class="auto">
-                  <i class="glyphicon glyphicon-phone"></i>
-                  <span>微信用户管理</span>
-                </a>
-              </li>
-              <% end %>
-              <% if can? :manage, Info %>
+            <% end %>
+            <% if can? :manage, Info %>
               <li class="<%= "active" if controller_name == "infos" %>">
                 <a href="/infos" class="auto">
                   <i class="glyphicon glyphicon-comment"></i>
                   <span>信息管理</span>
                 </a>
               </li>
-              <% end %>
-              <li class="<%= "active" if controller_name == "photos" %>">
+            <% end %>
+            <li class="<%= "active" if controller_name == "photos" %>">
                 <a href="/photos" class="auto">
                   <i class="glyphicon glyphicon-picture"></i>
                   <span>图片管理</span>
                 </a>
-              </li>
-              <% if can? :manage, InfoClass %>
+            </li>
+            <% if can? :manage, InfoClass %>
               <li class="<%= "active" if controller_name == "info_classes" %>">
                 <a href="/info_classes" class="auto">
                   <i class="glyphicon glyphicon-list-alt"></i>
@@ -99,23 +94,34 @@
                   <span>信息类型管理</span>
                 </a>
               </li>
-              <% end %>
-              <% if can? :manage, BottomMenu %>
-               <li class="<%= "active" if controller_name == "bottom_menus" %>">
+            <% end %>
+          <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+            <span>微信管理</span>
+          </li>
+            <% if can? :manage, WxUser %>
+              <li class="<%= "active" if controller_name == "wx_users" %>">
+                <a href="/wx_users" class="auto">
+                  <i class="glyphicon glyphicon-phone"></i>
+                  <span>微信用户管理</span>
+                </a>
+              </li>
+            <% end %>
+            <% if can? :manage, BottomMenu %>
+              <li class="<%= "active" if controller_name == "bottom_menus" %>">
                 <a href="/bottom_menus" class="auto">
                   <i class="glyphicon glyphicon-credit-card"></i>
                   <span>底部菜单管理</span>
                 </a>
               </li>
-              <% end %>
-              <% if can? :manage, Diymenu %>
+            <% end %>
+            <% if can? :manage, Diymenu %>
               <li class="<%= "active" if controller_name == "diymenus" %>">
                 <a href="/diymenus" class="auto">
                   <i class="glyphicon glyphicon-menu-hamburger"></i>
                   <span>微信菜单管理</span>
                 </a>
               </li>
-              <% end %>
+            <% end %>
           <li class="line dk hidden-folded"></li>
         </ul>
       </nav>

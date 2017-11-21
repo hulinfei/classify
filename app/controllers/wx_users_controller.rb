@@ -6,6 +6,8 @@ class WxUsersController < BaseController
       @wx_users = WxUser.all.page params[:page]
     else
       @wx_users = @current_site.wx_users.all.page params[:page]
+      @wx_users = WxUser.full_text_search(params[:name]) unless params[:name].blank?
+      @wx_users = @wx_users.page params[:page]
     end
   end
 

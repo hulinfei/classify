@@ -1,6 +1,7 @@
 class WxUser
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Search
   # 用户是否订阅公众号 0 代表用户没有关注公众号
   field :subscribe, type: Integer
   # openID
@@ -49,4 +50,6 @@ class WxUser
   has_many :infos
   has_many :credit_logs
   belongs_to :site, counter_cache: true # 统计所属site的 wx_users
+  # 全文搜索
+  search_in :openid, :nickname, :sex, :province, :country, :city
 end

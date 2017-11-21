@@ -90,3 +90,5 @@ gem "mini_mime", '0.1.4'
 gem 'weixin_rails_middleware', git: "https://github.com/lanrion/weixin_rails_middleware.git" 
 gem 'weixin_authorize', git: "https://github.com/lanrion/weixin_authorize.git"
 gem "redis-namespace"
+# 全文搜索
+gem 'mongoid_search'

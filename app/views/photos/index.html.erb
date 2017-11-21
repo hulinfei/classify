@@ -17,7 +17,7 @@
       <tbody>
         <% @photos.each do |photo| %>
           <tr>
-            <td><%= photo.img %></td>
+            <td><img src="<%= photo.img_url('100') %>"/></td>
             <td><%= photo.created_at.strftime("%F %T")%></td>
             <td>
               <%= link_to "查看", photo, class: "btn btn-default btn-xs" %>

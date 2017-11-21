@@ -1,4 +1,4 @@
-IMAGE_UPLOADER_ALLOW_IMAGE_VERSION_NAMES = %(30x30, 720x240, 165x30, 20x20)
+IMAGE_UPLOADER_ALLOW_IMAGE_VERSION_NAMES = %(30x30, 720x240, 165x30, 20x20, 100)
 class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
