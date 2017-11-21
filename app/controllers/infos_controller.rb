@@ -65,8 +65,10 @@ class InfosController < BaseController
   def update
     respond_to do |format|
       if @info.update(params.require(:info).permit!)
-        params[:photos]['img'].each do |i|
-          @photo = @info.photos.create!(:img => i)
+        if not params[:photos].blank?
+          params[:photos]['img'].each do |i|
+            @photo = @info.photos.create!(:img => i)
+          end
         end
         format.html { redirect_to infos_path(category_id: params[:category_id]), notice: 'Info was successfully updated.' }
       else
