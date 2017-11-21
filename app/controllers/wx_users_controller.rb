@@ -25,10 +25,8 @@ class WxUsersController < BaseController
     respond_to do |format|
       if @wx_user.save
         format.html { redirect_to @wx_user, notice: 'WxUser was successfully created.' }
-        format.json { render :show, status: :created, location: @wx_user }
       else
         format.html { render :new }
-        format.json { render json: @wx_user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -37,10 +35,8 @@ class WxUsersController < BaseController
     respond_to do |format|
       if @wx_user.update(wx_user_params)
         format.html { redirect_to @wx_user, notice: 'WxUser was successfully updated.' }
-        format.json { render :show, status: :ok, location: @wx_user }
       else
         format.html { render :edit }
-        format.json { render json: @wx_user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -49,7 +45,6 @@ class WxUsersController < BaseController
     @wx_user.destroy
     respond_to do |format|
       format.html { redirect_to wx_users_url, notice: 'WxUser was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

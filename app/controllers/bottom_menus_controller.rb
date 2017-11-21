@@ -41,10 +41,8 @@ class BottomMenusController < BaseController
     respond_to do |format|
       if @bottom_menu.save
         format.html { redirect_to bottom_menus_path, notice: 'Bottom menu was successfully created.' }
-        format.json { render :show, status: :created, location: @bottom_menu }
       else
         format.html { render :new }
-        format.json { render json: @bottom_menu.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -55,10 +53,8 @@ class BottomMenusController < BaseController
     respond_to do |format|
       if @bottom_menu.update(bottom_menu_params)
         format.html { redirect_to bottom_menus_path, notice: 'Bottom menu was successfully updated.' }
-        format.json { render :show, status: :ok, location: @bottom_menu }
       else
         format.html { render :edit }
-        format.json { render json: @bottom_menu.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -69,7 +65,6 @@ class BottomMenusController < BaseController
     @bottom_menu.destroy
     respond_to do |format|
       format.html { redirect_to bottom_menus_url, notice: 'Bottom menu was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

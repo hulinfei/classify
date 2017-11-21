@@ -34,10 +34,8 @@ class DiymenusController < BaseController
     respond_to do |format|
       if @diymenu.save
         format.html { redirect_to diymenus_path, notice: 'Diymenu was successfully created.' }
-        format.json { render :show, status: :created, location: @diymenu }
       else
         format.html { render :new }
-        format.json { render json: @diymenu.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,10 +46,8 @@ class DiymenusController < BaseController
     respond_to do |format|
       if @diymenu.update(diymenu_params)
         format.html { redirect_to diymenus_path, notice: 'Diymenu was successfully updated.' }
-        format.json { render :show, status: :ok, location: @diymenu }
       else
         format.html { render :edit }
-        format.json { render json: @diymenu.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,7 +58,6 @@ class DiymenusController < BaseController
     @diymenu.destroy
     respond_to do |format|
       format.html { redirect_to diymenus_url, notice: 'Diymenu was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

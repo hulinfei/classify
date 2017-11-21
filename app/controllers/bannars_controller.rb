@@ -5,7 +5,7 @@ class BannarsController <  BaseController
   # GET /bannars.json
   def index
     @bannars = @current_site.bannars.page params[:page]
-     @bannars = @bannars.order_by(active: :desc, position: :asc)
+    @bannars = @bannars.order_by(active: :desc, position: :asc)
   end
 
   # GET /bannars/1
@@ -40,10 +40,8 @@ class BannarsController <  BaseController
     respond_to do |format|
       if @bannar.save
         format.html { redirect_to bannars_path, notice: 'Bannar was successfully created.' }
-        format.json { render :show, status: :created, location: @bannar }
       else
         format.html { render :new }
-        format.json { render json: @bannar.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,10 +52,8 @@ class BannarsController <  BaseController
     respond_to do |format|
       if @bannar.update(bannar_params)
         format.html { redirect_to bannars_path, notice: 'Bannar was successfully updated.' }
-        format.json { render :show, status: :ok, location: @bannar }
       else
         format.html { render :edit }
-        format.json { render json: @bannar.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -68,7 +64,6 @@ class BannarsController <  BaseController
     @bannar.destroy
     respond_to do |format|
       format.html { redirect_to bannars_url, notice: 'Bannar was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

@@ -15,9 +15,10 @@ class InfosController < BaseController
   end
 
   def show
-     @info_types = @info.info_types
-     @info = @info.inc(view: 1)
-     @photos = @info.photos
+    @info_types = @info.info_types
+    @info.view = $redis.incr("info:#{@info.id.to_s}:view")
+    @info.save
+    @photos = @info.photos
   end
 
   def new
@@ -61,12 +62,10 @@ class InfosController < BaseController
         @info.update(wx_user_id: WxUser.first.id)
 
         format.html { redirect_to infos_path(category_id: params[:category_id]), notice: 'Info was successfully created.' }
-        format.json { render :show, status: :created, location: @info }
       else
         @info_types = Category.find(params[:category_id]).info_class.info_types
         @photo = Photo.new
         format.html { render :new }
-        format.json { render json: @info.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -75,12 +74,10 @@ class InfosController < BaseController
     respond_to do |format|
       if @info.update(info_params)
         format.html { redirect_to infos_path(category_id: params[:category_id]), notice: 'Info was successfully updated.' }
-        format.json { render :show, status: :ok, location: @info }
       else
         @info_types = @info.info_types
         @photo = @info.photos.new
         format.html { render :edit }
-        format.json { render json: @info.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -89,7 +86,6 @@ class InfosController < BaseController
     @info.destroy
     respond_to do |format|
       format.html { redirect_to infos_url, notice: 'Info was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

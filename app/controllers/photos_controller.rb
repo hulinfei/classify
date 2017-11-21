@@ -31,15 +31,6 @@ class PhotosController <  BaseController
       @params['random_number'] = params[:photo][:random_number]
       @photo = Photo.new(@params)
       @photo.save
-    #   if !@photo.save
-    #     respond_to do |format|
-    #       format.html { redirect_to new_photo_path, error: 'An error occured uploading.' }
-    #     end
-    #   end
-    # end
-
-    # respond_to do |format|
-    #   format.html { redirect_to photos_path, notice: 'Photos were successfully uploaded.' }
     end
   end
 
@@ -49,10 +40,8 @@ class PhotosController <  BaseController
     respond_to do |format|
       if @photo.update(photo_params)
         format.html { redirect_to photos_path, notice: 'Photo was successfully updated.' }
-        format.json { render :show, status: :ok, location: @photo }
       else
         format.html { render :edit }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -63,7 +52,6 @@ class PhotosController <  BaseController
     @photo.destroy
     respond_to do |format|
       format.html { redirect_to photos_url, notice: 'Photo was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

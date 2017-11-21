@@ -36,10 +36,8 @@ class SitesController < BaseController
     respond_to do |format|
       if @site.save
         format.html { redirect_to sites_path, notice: 'Site was successfully created.' }
-        format.json { render :index, status: :created, location: @site }
       else
         format.html { render :new }
-        format.json { render json: @site.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -50,10 +48,8 @@ class SitesController < BaseController
     respond_to do |format|
       if @site.update(site_params)
         format.html { redirect_to sites_path, notice: 'Site was successfully updated.' }
-        format.json { render :index, status: :ok, location: @sites }
       else
         format.html { render :edit }
-        format.json { render json: @site.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,7 +60,6 @@ class SitesController < BaseController
     @site.destroy
     respond_to do |format|
       format.html { redirect_to sites_url, notice: 'Site was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
