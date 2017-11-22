@@ -16,25 +16,28 @@
         详情
       </label>
       <div class="col-sm-10">
-        <script type="text/plain" id="contentEditor" name="info[details]" id="info_details" style="width:580px;height:300px;"><%= raw(@info.details) %></script>
+        <script type="text/plain" id="contentEditor" name="info[details]" id="info_details" style="width:98%;height:400px;"><%= raw(@info.details) %></script>
       </div>
     </div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
-     <div class="col-sm-offset-2">
-    <!-- 显示图片 -->
-    <% @info.photos.all.each do |photo| %>
-      <div id="<%= photo.id %>">
-      <%= image_tag photo.img_url, class: "img-thumbnail" %>
-      <a class="btn btn-default btn-xs" rel="nofollow" data-method="delete" href="/photos/<%= photo.id %>" id="<%= photo.id %>btn">删除</a>
-      </div>
-    <% end %>
-    <!-- 上传图片 -->
-    <%= f.fields_for :photos do |p| %>
-     <div class="field">
-       <%= p.label :img %><br>
-       <%= p.file_field :img, :multiple => true, name: "photos[img][]" %>
-     </div>
-    <% end %>
+    <div class="col-sm-offset-2">
+      <!-- 显示图片 -->
+      <% @info.photos.all.each do |photo| %>
+        <div id="<%= photo.id %>">
+          <img src="<%= photo.img_url %>" class="img-thumbnail" >
+          <a class="btn btn-default btn-xs" rel="nofollow" data-method="delete" href="/photos/<%= photo.id %>/del" id="<%= photo.id %>btn">删除</a>
+        </div>
+      <% end %>
+    </div>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+    <div class="col-sm-offset-2">
+      <!-- 上传图片 -->
+      <%= f.fields_for :photos do |p| %>
+       <div class="field">
+         <%= p.label "上传图片" %>
+         <%= p.file_field :img, :multiple => true, name: "photos[img][]" %>
+       </div>
+      <% end %>
     </div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
       <%= f.input :address, label: "地址" %>

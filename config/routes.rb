@@ -2,7 +2,11 @@ require 'sidekiq/web'
 require 'sidekiq/cron/web'
 Rails.application.routes.draw do
 
-  resources :photos
+  resources :photos do
+    member do
+      delete 'del'
+    end
+  end
   mount WeixinRailsMiddleware::Engine, at: "/"
   devise_for :users, controllers: { sessions: 'users/sessions' }
 

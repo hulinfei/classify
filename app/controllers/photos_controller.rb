@@ -50,9 +50,13 @@ class PhotosController <  BaseController
   # DELETE /photos/1.json
   def destroy
     @photo.destroy
-      # respond_to do |format|
-      #   format.html { redirect_to request.referrer, notice: 'Photo was successfully destroyed.' }
-      # end
+      respond_to do |format|
+        format.html { redirect_to request.referrer, notice: 'Photo was successfully destroyed.' }
+      end
+  end
+  # 用做info edit页面删除图片
+  def del
+    @photo.destroy
   end
 
   private
