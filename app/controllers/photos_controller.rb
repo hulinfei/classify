@@ -50,9 +50,9 @@ class PhotosController <  BaseController
   # DELETE /photos/1.json
   def destroy
     @photo.destroy
-    respond_to do |format|
-      format.html { redirect_to request.referrer, notice: 'Photo was successfully destroyed.' }
-    end
+      # respond_to do |format|
+      #   format.html { redirect_to request.referrer, notice: 'Photo was successfully destroyed.' }
+      # end
   end
 
   private

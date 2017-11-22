@@ -23,8 +23,10 @@
      <div class="col-sm-offset-2">
     <!-- 显示图片 -->
     <% @info.photos.all.each do |photo| %>
+      <div id="<%= photo.id %>">
       <%= image_tag photo.img_url, class: "img-thumbnail" %>
-      <a class="btn btn-default btn-xs" rel="nofollow" data-method="delete" href="/photos/<%= photo.id %>">删除</a>
+      <a class="btn btn-default btn-xs" rel="nofollow" data-method="delete" href="/photos/<%= photo.id %>" id="<%= photo.id %>btn">删除</a>
+      </div>
     <% end %>
     <!-- 上传图片 -->
     <%= f.fields_for :photos do |p| %>
@@ -74,6 +76,18 @@
   <script type="text/javascript" charset="utf-8" src="/umeditor/lang/zh-cn/zh-cn.js"></script>
   <script type="text/javascript">
     var um1 = UM.getEditor('contentEditor');
+  </script>
+<% end %>
+<!-- 隐藏图片 -->
+<% content_for :script do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      <% @info.photos.all.each do |photo| %>
+      $("#<%= photo.id %>btn").click(function(){
+        $("#<%= photo.id %>").hide();
+      });
+      <% end %>
+    });
   </script>
 <% end %>
 </div>
