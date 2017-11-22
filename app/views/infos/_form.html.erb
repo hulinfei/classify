@@ -37,14 +37,13 @@
         <% elsif info_type.optype == "radio" %>
          <div class="col-sm-offset-2">
           <label class="col-sm-2 control-label file optional"><%= info_type.name %></label>
-          
           <label class="radio-inlin">
             <% Settings.info_type.type.each_index do |i|%>
         <input type="radio" id="type" name="info[<%= info_type.fieldname %>]" value= "<%= Settings.info_type.type[i] %>"/><%= Settings.info_type.type[i] %>
     </label>
     <% end %>
      </div>
-        <% end %>
+     <% end %>
         </div>
         <div class="line line-dashed b-b line-lg pull-in"></div>
     <% end %>
