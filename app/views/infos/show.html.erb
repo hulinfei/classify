@@ -20,13 +20,13 @@
         </div>
       </div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
-      <%= f.input :address, label: "地址" %>
+      <%= f.input :address, label: "地址", disabled: true %>
     <div class="line line-dashed b-b line-lg pull-in"></div>
-
+ <div class="col-sm-offset-2">
     <% @photos.each do |photo| %>
       <%= image_tag photo.img_url, class: "img-thumbnail" %>
     <% end %>
-
+</div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
     <% @info_types.each do |info_type|%>
        <div class="form-group email optional user_email">

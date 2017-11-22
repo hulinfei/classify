@@ -19,6 +19,8 @@
         <script type="text/plain" id="contentEditor" name="info[details]" id="info_details" style="width:580px;height:300px;"><%= raw(@info.details) %></script>
       </div>
     </div>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+     <div class="col-sm-offset-2">
     <!-- 显示图片 -->
     <% @info.photos.all.each do |photo| %>
       <%= image_tag photo.img_url, class: "img-thumbnail" %>
@@ -31,16 +33,28 @@
        <%= p.file_field :img, :multiple => true, name: "photos[img][]" %>
      </div>
     <% end %>
+    </div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
       <%= f.input :address, label: "地址" %>
     <div class="line line-dashed b-b line-lg pull-in"></div>
     <!-- 循环生成动态的字段 -->
     <% @info_types.each do |info_type|%>
        <div class="form-group email optional user_email">
+         <% if info_type.optype == "input"%>
         <label class="col-sm-2 control-label email optional"><%= info_type.name %></label>
         <div class="col-sm-10">
           <input class="form-control string email optional"   value="<%= @info[ info_type.fieldname] %>" name="info[<%= info_type.fieldname %>]" >
         </div>
+         <% elsif info_type.optype == "radio" %>
+         <div class="col-sm-offset-2">
+          <label class="col-sm-2 control-label file optional"><%= info_type.name %></label>
+          <label class="radio-inlin">
+            <% Settings.info_type.type.each_index do |i|%>
+        <input type="radio" id="type" name="info[<%= info_type.fieldname %>]" value= "<%= Settings.info_type.type[i] %>" <%= Settings.info_type.type[i] == @info[ info_type.fieldname] ? 'checked' : '' %>/><%= Settings.info_type.type[i] %>
+    </label>
+    <% end %>
+        </div>
+        <% end %>
         </div>
         <div class="line line-dashed b-b line-lg pull-in"></div>
     <% end %>

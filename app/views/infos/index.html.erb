@@ -1,11 +1,8 @@
 <div class="panel panel-default">
   <strong>请选择分类：</strong>
     <% @categories.each do |category| %>
-    <% if  %>
-    <a href="<%= infos_url(category_id: category.id) %>" style="color:blue"><%= category.name %> &nbsp</a>
-     <% else %>
-    <a href="<%= infos_url(category_id: category.id) %>" style="color:red"><%= category.name %> &nbsp</a>
-    <% end %>
+     <input type="radio" id="name" name="category_id" value= "<%= category.id %>" <%= category.id.to_s == params[:category_id] ? 'checked' : ''%>  onclick="if (this.checked){window.location='infos?category_id=<%= category.id %>'}"/> <%= category.name %>
+    </label>
     <% end %>
   <div class="panel-heading">
       信息列表

@@ -14,12 +14,15 @@
         <script type="text/plain" id="contentEditor" name="info[details]" id="info_details" style="width:580px;height:300px;"><%= raw(@info.details) %></script>
       </div>
     </div>
+    <div class="line line-dashed b-b line-lg pull-in"></div>
+     <div class="col-sm-offset-2">
     <%= f.fields_for :photos do |p| %>
      <div class="field">
        <%= p.label :img %><br>
        <%= p.file_field :img, :multiple => true, name: "photos[img][]" %>
      </div>
     <% end %>
+    </div>
     <div class="line line-dashed b-b line-lg pull-in"></div>
       <%= f.input :address, label: "地址" %>
     <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -34,9 +37,10 @@
         <% elsif info_type.optype == "radio" %>
          <div class="col-sm-offset-2">
           <label class="col-sm-2 control-label file optional"><%= info_type.name %></label>
+          
           <label class="radio-inlin">
             <% Settings.info_type.type.each_index do |i|%>
-        <input type="radio" id="type" name="type" value= "<%= Settings.info_type.type[i] %>" <%= info_type.optype == params[:type] ? 'checked' : '' %>/><%= Settings.info_type.type[i] %>
+        <input type="radio" id="type" name="info[<%= info_type.fieldname %>]" value= "<%= Settings.info_type.type[i] %>"/><%= Settings.info_type.type[i] %>
     </label>
     <% end %>
      </div>
