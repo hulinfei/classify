@@ -8,7 +8,7 @@ json.infos @infos do |info|
 	json.address info.address
 	json.imgs info.photos do |photo|
 	  json.id photo.id.to_s
-	  json.img_url photo.img_url
+	  json.img_url photo.img_url("96x96")
 	end
 	json.view info.view
 	json.created_at info.created_at.strftime("%F %T")
