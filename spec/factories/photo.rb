@@ -1,6 +1,6 @@
 # This will guess the User class
 FactoryBot.define do
-  factory :site do
+  factory :photo do
     name "昆明"
     domain "www.abc.com"
     weixin_appid ""

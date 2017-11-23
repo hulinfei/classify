@@ -4,7 +4,7 @@ class BottomMenu
   include Mongoid::Orderable
 
   paginates_per 5
-  
+
   #底部菜单名称
   field :name, type: String
   #底部菜单名称
@@ -15,5 +15,5 @@ class BottomMenu
   mount_uploader :active_icon, AvatarUploader
 
   belongs_to :site
-   orderable
+  orderable
 end

@@ -16,7 +16,7 @@ class Api::V1::InfosController <  Api::V1::BaseController
     @photos = @info.photos
     # 获取用户IP 存入redis
     ip = request.env['HTTP_X_REAL_IP']
-    $redis.sadd("info:#{@info.id}:ips","#{ip}")
+    @info.inc_viewer(ip)
   end
 
   def hot

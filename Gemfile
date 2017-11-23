@@ -49,6 +49,7 @@ group :test do
   gem 'guard-rspec', require: false
   # 自动bundle
   gem 'guard-bundler', require: false
+  gem 'spring-commands-rspec'
 end
 
 group :development do
