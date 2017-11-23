@@ -1,1 +1,1 @@
-$redis = Redis.new(url: "redis://192.168.0.112:6379/0")
+$redis = Redis.new(url: "redis://#{Settings.redis.host}:#{Settings.redis.port}/0")

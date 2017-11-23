@@ -1,11 +1,30 @@
+#信息类型
 info_type:
+  #字段类型
   fieldtype:
     string: 1
     integer: 2
     boolean: 3
+  #输出类型
   optype:
     input: 1
     textarea: 2
     checkbox: 3
     radio: 4
-  type: [别墅, 普通住宅, 公寓, 平房, 四合院, 排屋]
+  fieldname:
+   #房产类型
+    type: [别墅, 普通住宅, 公寓, 平房, 四合院, 排屋]
+  #招聘福利
+    welfare:
+     - 五险一金
+     - 带薪年假
+     - 生日福利
+     - 周末双休
+     - 包吃包住
+   #房产配套设施
+    auxiliary_facilities:
+     - 电梯
+     - 学校
+     - 停车场
+     - 超市
+     - 地铁

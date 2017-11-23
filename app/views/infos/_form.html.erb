@@ -28,22 +28,33 @@
     <div class="line line-dashed b-b line-lg pull-in"></div>
     <!-- 循环生成动态的字段 -->
     <% @info_types.each do |info_type|%>
-       <div class="form-group email optional user_email">
-        <% if info_type.optype == "input"%>
-        <label class="col-sm-2 control-label email optional"><%= info_type.name %></label>
-        <div class="col-sm-10">
+    <div class="form-group string optional info_description">
+          <label class="col-sm-2 control-label string optional" for="info_description"><%= info_type.name %></label>
+          <div class="col-sm-10">
+          <!-- 判断输出类型是否是input -->
+        <% if info_type.optype == Settings.info_type.optype.keys[0].to_s%>
           <input class="form-control string email optional"   value="<%= @info[ info_type.fieldname] %>" name="info[<%= info_type.fieldname %>]" >
-        </div>
-        <% elsif info_type.optype == "radio" %>
-         <div class="col-sm-offset-2">
-          <label class="col-sm-2 control-label file optional"><%= info_type.name %></label>
-          <label class="radio-inlin">
-            <% Settings.info_type.type.each_index do |i|%>
-        <input type="radio" id="type" name="info[<%= info_type.fieldname %>]" value= "<%= Settings.info_type.type[i] %>"/><%= Settings.info_type.type[i] %>
-    </label>
-    <% end %>
-     </div>
+          <!-- 判断输出类型是否是radio -->
+        <% elsif info_type.optype == Settings.info_type.optype.keys[3].to_s %>
+        <% if Settings.info_type.fieldname.keys == @info[ info_type.fieldname] %>
+            <label class="radio-inlin">
+              <% Settings.info_type.fieldname[@info[ info_type.fieldname]].each_index do |i|%>
+              <input type="radio" id="type" name="info[<%= info_type.fieldname %>]" value= "<%= Settings.info_type.type[i] %>" <%= Settings.info_type.type[i] == @info[ info_type.fieldname] ? 'checked' : '' %>/><%= Settings.info_type.type[i] %>
+            </label>
+            <% end %>
+            <% end %>
+            <!-- 判断输出类型是否是textarea -->
+     <% elsif info_type.optype == Settings.info_type.optype.keys[1].to_s %>
+            <textarea class="form-control" rows="5"  name="info[<%= info_type.fieldname %>]"><%= @info[ info_type.fieldname] %></textarea>
+            <!-- 判断输出类型是否是checkbox -->
+        <% elsif info_type.optype == Settings.info_type.optype.keys[2].to_s %>
+             <% if info_type.fieldname == "welfare"%>
+            <% Settings.info_type.welfare.each_index do |i|%>
+        <input type="checkbox" id="welfare" name="info[<%= info_type.fieldname %>]" value="<%= Settings.info_type.welfare[i] %>"><%= Settings.info_type.welfare[i] %>
+        <% end %>
+        <% end %>
      <% end %>
+        </div>
         </div>
         <div class="line line-dashed b-b line-lg pull-in"></div>
     <% end %>

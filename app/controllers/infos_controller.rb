@@ -24,6 +24,10 @@ class InfosController < BaseController
     @info_types = Category.find(params[:category_id]).info_class.info_types
     @info = Category.find(params[:category_id]).infos.new
     @photo = @info.photos.build
+    @setting_fieldname = Array.new
+    Settings.info_type do |f|
+      @setting_fieldname << f[0].to_s
+    end
   end
 
   def edit
