@@ -63,7 +63,7 @@
             <!-- 判断输出类型是否是checkbox -->
         <% elsif info_type.optype == Settings.info_type.optype.keys[2].to_s %>
             <% Settings.info_type.fieldname[info_type.fieldname].each_index do |i|%>
-        <input type="checkbox" id="info_type.fieldname" name="info[<%= info_type.fieldname %>][]" value="<%= Settings.info_type.fieldname[info_type.fieldname][i] %>" <%= Settings.info_type.fieldname[info_type.fieldname][i] == @info[ info_type.fieldname] ? 'checked' : '' %>/><%= Settings.info_type.fieldname[info_type.fieldname][i] %>
+        <input type="checkbox" id="fieldname" name="info[<%= info_type.fieldname %>][]" value="<%= Settings.info_type.fieldname[info_type.fieldname][i] %>" <%= Settings.info_type.fieldname[info_type.fieldname][i] == @info[ info_type.fieldname] ? 'checked' : '' %>/><%= Settings.info_type.fieldname[info_type.fieldname][i] %>
         <% end %>
      <% end %>
         </div>
