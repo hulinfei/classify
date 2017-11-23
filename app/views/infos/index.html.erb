@@ -6,15 +6,23 @@
     <% end %>
   <div class="panel-heading">
       信息列表
-       <% if not params[:category_id] == nil%>
-         <div class="pull-right">
-      <%= link_to "新建信息", new_info_path(category_id: params[:category_id]), class: "btn btn-primary btn-xs" %>
-    </div>
+    <% if not params[:category_id] == nil%>
+      <div class="pull-right">
+          <%= link_to "新建信息", new_info_path(category_id: params[:category_id]), class: "btn btn-primary btn-xs" %>
+      </div>
     <% elsif %>
-    <div class="pull-right">
-      <strong>选择分类后才能新建信息</strong>
-    </div>
-       <% end %>
+      <div class="pull-right">
+        <strong>选择分类后才能新建信息</strong>
+      </div>
+    <% end %>
+    <form action="/infos" method="get">
+      <div class="input-group col-md-3" style="margin-top:15px ">
+        <input type="text" class="form-control" placeholder="请输入字段名" id='search' name="search" value="<%= params[:search]%>"/ >
+          <span class="input-group-btn">
+            <input class="btn btn-info btn-search" type="submit" name="" value="搜索">
+          </span>
+      </div>
+    </form>
   </div>
   <div class="table-responsive">
     <table class="table table-striped b-t b-light">

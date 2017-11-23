@@ -2,6 +2,7 @@ class Info
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Attributes::Dynamic
+  include Mongoid::Search
   validates :phone, presence: true
   # 标题
   field :title, type: String
@@ -26,6 +27,8 @@ class Info
   has_many :photos
   belongs_to :wx_user
   belongs_to :category
+  # 全文搜索
+  search_in :title, :phone, :description, :address, :status
 
   #info_type验证规则判断
   def validate_dynamic_attrs
